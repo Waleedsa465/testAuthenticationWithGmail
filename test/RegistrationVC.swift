@@ -97,25 +97,29 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
             let email = emailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // Create the user
-            
-            
-            
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                
-                // Check for errors
                 if err != nil {
-                    
-                    // There was an error creating the user
                     self.showError("Error creating user")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                         self.errorLabel.text = ""
                     }
-
                 }
                 else {
-                    
-                    
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                        if let error = error {
+                            print("Error sending verification email: \(error.localizedDescription)")
+                            self.errorLabel.text = error.localizedDescription
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                                self.errorLabel.text = ""
+                            }
+                        } else {
+                            print("Verification email sent successfully.")
+                            self.errorLabel.text = "Verification email sent successfully."
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                                self.errorLabel.text = ""
+                            }
+                        }
+                    })
                     
                     let db = Firestore.firestore()
                     db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
@@ -126,18 +130,12 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                                 self.errorLabel.text = ""
                             }
-
                         }
                     }
-//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
-//                    UserDefaults.standard.set(email, forKey: strLoginKey)
-//                    self.navigationController?.isNavigationBarHidden = true
-//                    self.navigationController?.pushViewController(vc, animated: true)
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                     let nav = UINavigationController(rootViewController: vc)
-            //        nav.navigationBar.isHidden = true
+                    print("Successfully create user")
                     self.view.window?.rootViewController = nav
-                    
                 }
             }
         }
