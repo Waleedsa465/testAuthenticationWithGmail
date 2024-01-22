@@ -13,7 +13,8 @@ import FirebaseDatabase
 class RegistrationVC: UIViewController,UITextFieldDelegate {
     
     var ref: DatabaseReference!
-    
+    var iconClick = false
+    let imageIcon = UIImageView()
     
     @IBOutlet weak var firstNameTxt: UITextField!
     @IBOutlet weak var lastNameTxt: UITextField!
@@ -24,6 +25,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageIconClose()
         errorLabel.alpha = 0
         activityIndicator.isHidden = true
         activityIndicator.layer.shadowOpacity = 10
@@ -37,6 +39,43 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
     }
+    
+    func imageIconClose(){
+        imageIcon.image = UIImage(named: "close_eye")
+        let contentView = UIView()
+        contentView.addSubview(imageIcon)
+        
+        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
+        
+        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
+        
+        
+        passTxt.rightView = contentView
+        passTxt.rightViewMode = .always
+        
+//        further addition here for pass show
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageIcon.isUserInteractionEnabled = true
+        imageIcon.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){
+        
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        if iconClick{
+            
+            iconClick = false
+            tappedImage.image = UIImage(named: "open_eye")
+            passTxt.isSecureTextEntry = false
+        }
+        else{
+            iconClick = true
+            tappedImage.image = UIImage(named: "close_eye")
+            passTxt.isSecureTextEntry = true
+        }
+    }
+    
     
     func textFieldDelegate(){
         firstNameTxt.delegate = self
@@ -92,13 +131,13 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
 
     
     @IBAction func registrationBtn(_ sender: Any) {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+//        activityIndicator.isHidden = false
+//        activityIndicator.startAnimating()
+        
         let error = validateFields()
         if error != nil {
             showError(error!)
-        }
-        else {
+        } else {
             let firstName = firstNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -106,46 +145,34 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
             
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 if err != nil {
-                    self.activityIndicator.isHidden = false
                     self.showError("Error creating user")
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                        self.errorLabel.text = ""
-                        self.activityIndicator.stopAnimating()
-                        self.activityIndicator.isHidden = true
-                    }
-                }
-                else {
+                } else {
                     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                         if let error = error {
                             print("Error sending verification email: \(error.localizedDescription)")
-                            self.errorLabel.text = error.localizedDescription
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                                self.errorLabel.text = ""
-                            }
+                            self.showError(error.localizedDescription)
                         } else {
                             print("Verification email sent successfully.")
-                            self.errorLabel.text = "Verification email sent successfully."
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                                self.errorLabel.text = ""
-                            }
+                            self.showError("Verification email sent successfully.")
                         }
                     })
+                    
                     let databaseRef = Database.database().reference()
                     
                     let userData = ["firstname": firstName,
                                     "lastname": lastName,
                                     "Email": email,
-                                    "Password":password,
+                                    "Password": password,
                                     "uid": result!.user.uid
-                                        ]
-
-                                        databaseRef.child("users").child(result!.user.uid).setValue(userData) { [weak self] (error, ref) in
-                                            guard self != nil else { return }
+                    ]
+                    
+                    databaseRef.child("users").child(result!.user.uid).setValue(userData) { [weak self] (error, ref) in
+                        guard let self = self else { return }
                         if let error = error {
                             print("Error saving user data to Realtime Database: \(error.localizedDescription)")
                         }
+
                     }
-                    self.activityIndicator.stopAnimating()
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                     let nav = UINavigationController(rootViewController: vc)
                     print("Successfully create user")
@@ -154,4 +181,5 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
             }
         }
     }
+
 }

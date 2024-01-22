@@ -12,7 +12,7 @@
         <!--Login Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
                                     <constraint firstAttribute="height" constant="50" id="cXQ-Lq-FJR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqp-3d-fFB">
                                 <rect key="frame" x="20" y="369" width="335" height="45"/>
@@ -128,7 +128,7 @@
         <!--Registration Page-->
         <scene sceneID="KvU-ZZ-Hu3">
             <objects>
-                <viewController storyboardIdentifier="RegistrationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5lY-sc-dh1" customClass="RegistrationVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5lY-sc-dh1" customClass="RegistrationVC" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ffe-kO-nor">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ze2-Sp-5bL">
                                         <rect key="frame" x="0.0" y="180" width="335" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-AP-HaG">
                                         <rect key="frame" x="0.0" y="240" width="335" height="50"/>
@@ -243,7 +243,7 @@
         <!--Search Birds-->
         <scene sceneID="qcC-oT-0NK">
             <objects>
-                <viewController id="yYP-If-14K" customClass="SearchBirdsViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yYP-If-14K" customClass="SearchBirdsViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eYK-aZ-hQU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
                                 <rect key="frame" x="0.0" y="80" width="375" height="538"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="170" id="flt-iQ-74c" customClass="TableViewCell" customModule="test" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="170" id="flt-iQ-74c" customClass="TableViewCell" customModule="BirdsApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="flt-iQ-74c" id="V0G-0H-O8r">
@@ -362,7 +362,7 @@
         <!--Search Birds Detail Controller-->
         <scene sceneID="iH7-LU-2C3">
             <objects>
-                <viewController storyboardIdentifier="SearchBirdsDetailController" id="LbT-Wr-Cta" customClass="SearchBirdsDetailController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchBirdsDetailController" id="LbT-Wr-Cta" customClass="SearchBirdsDetailController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OnJ-3t-atS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -600,7 +600,7 @@
         <!--Home Tab BarVC-->
         <scene sceneID="uJ7-Ac-53e">
             <objects>
-                <tabBarController storyboardIdentifier="HomeTabBarVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c6M-Q6-stp" customClass="HomeTabBarVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabBarVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c6M-Q6-stp" customClass="HomeTabBarVC" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rKQ-ET-ZfX"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lgO-zz-5Ye">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -622,7 +622,7 @@
         <!--Expired Birds-->
         <scene sceneID="AFs-Uf-2Ar">
             <objects>
-                <viewController id="csJ-oA-wpP" customClass="ExpiredBirdsViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="csJ-oA-wpP" customClass="ExpiredBirdsViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wk4-b8-d3s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -657,7 +657,7 @@
                                 <rect key="frame" x="0.0" y="80" width="375" height="538"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="181" id="ZPK-k1-uXi" customClass="ExpiredBirdsViewCell" customModule="test" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="181" id="ZPK-k1-uXi" customClass="ExpiredBirdsViewCell" customModule="BirdsApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPK-k1-uXi" id="gbG-1I-IyT">
@@ -756,7 +756,7 @@
         <!--Sold Birds-->
         <scene sceneID="j46-CD-tba">
             <objects>
-                <viewController id="IMZ-gT-Su4" customClass="SoldBirdsViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IMZ-gT-Su4" customClass="SoldBirdsViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q5h-gq-YoP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,7 +791,7 @@
                                 <rect key="frame" x="0.0" y="80" width="375" height="538"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="174" id="0fW-M0-7hL" customClass="SoldTableViewCell" customModule="test" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="174" id="0fW-M0-7hL" customClass="SoldTableViewCell" customModule="BirdsApps" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0fW-M0-7hL" id="TnE-oD-rsT">
@@ -886,7 +886,7 @@
         <!--HomeVC-->
         <scene sceneID="PjR-9g-HMU">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QHI-ZD-hCh" customClass="HomeVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QHI-ZD-hCh" customClass="HomeVC" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DUY-LY-goL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -902,16 +902,50 @@
                                     <action selector="logoutBtn:" destination="QHI-ZD-hCh" eventType="touchUpInside" id="zzW-tt-pmz"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-bd-E6K">
+                                <rect key="frame" x="20" y="243" width="335" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-tF-vFb">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="53.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3o-mU-Gci">
+                                        <rect key="frame" x="0.0" y="73.5" width="335" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTv-N3-y6R">
+                                        <rect key="frame" x="0.0" y="146.5" width="335" height="53.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="oQq-li-86J"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQD-Mq-eEF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KTH-zm-dSB" firstAttribute="leading" secondItem="gQD-Mq-eEF" secondAttribute="leading" constant="20" id="0sn-8C-c3E"/>
+                            <constraint firstItem="q6s-bd-E6K" firstAttribute="leading" secondItem="gQD-Mq-eEF" secondAttribute="leading" constant="20" id="5d9-5Y-ohM"/>
+                            <constraint firstItem="KTH-zm-dSB" firstAttribute="top" secondItem="q6s-bd-E6K" secondAttribute="bottom" constant="30" id="9u4-Vt-LXC"/>
+                            <constraint firstItem="gQD-Mq-eEF" firstAttribute="trailing" secondItem="q6s-bd-E6K" secondAttribute="trailing" constant="20" id="LAV-9A-ATT"/>
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="trailing" secondItem="KTH-zm-dSB" secondAttribute="trailing" constant="20" id="PjO-wW-asZ"/>
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="bottom" secondItem="KTH-zm-dSB" secondAttribute="bottom" constant="100" id="dAJ-VP-aKh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pec-6u-AOk"/>
+                    <connections>
+                        <outlet property="emailAddress" destination="MTv-N3-y6R" id="dHo-ZS-Qtw"/>
+                        <outlet property="firstNameLbl" destination="cwe-tF-vFb" id="BTd-jN-vba"/>
+                        <outlet property="lastNameLbl" destination="K3o-mU-Gci" id="z0n-e0-Pui"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxV-TJ-mv0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -920,7 +954,7 @@
         <!--Sold Detail View Controller-->
         <scene sceneID="FfI-uA-cdD">
             <objects>
-                <viewController storyboardIdentifier="SoldDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hb5-UZ-6Dx" customClass="SoldDetailViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SoldDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hb5-UZ-6Dx" customClass="SoldDetailViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cty-HR-n9k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1090,7 +1124,7 @@
         <!--Add Birds-->
         <scene sceneID="4lx-Pa-Gmw">
             <objects>
-                <viewController storyboardIdentifier="AddBirdsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D1Q-no-Eal" customClass="AddBirdsViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBirdsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D1Q-no-Eal" customClass="AddBirdsViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZzA-1T-1cZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1281,7 +1315,7 @@
         <!--Expired Birds DetailsVC-->
         <scene sceneID="VSf-iL-vrd">
             <objects>
-                <viewController storyboardIdentifier="ExpiredBirdsDetailsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dU-yi-c6i" customClass="ExpiredBirdsDetailsVC" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExpiredBirdsDetailsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dU-yi-c6i" customClass="ExpiredBirdsDetailsVC" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oEp-Mf-PbO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

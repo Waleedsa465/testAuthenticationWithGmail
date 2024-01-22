@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     var videoPlayer: AVPlayer?
     var videoPlayerLayer: AVPlayerLayer?
+    var iconClick = false
+    let imageIcon = UIImageView()
 
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passTxt: UITextField!
@@ -24,7 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpVideo()
+        imageIconClose()
         setUpElements()
         textFieldDelegate()
         errorLabel.alpha = 0
@@ -40,6 +42,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
             } else {
                 print("Please sign In again")
             }
+        }
+    }
+    
+    func imageIconClose(){
+        imageIcon.image = UIImage(named: "close_eye")
+        let contentView = UIView()
+        contentView.addSubview(imageIcon)
+        
+        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
+        
+        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
+        
+        
+        passTxt.rightView = contentView
+        passTxt.rightViewMode = .always
+        
+//        further addition here for pass show
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageIcon.isUserInteractionEnabled = true
+        imageIcon.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){
+        
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        if iconClick{
+            
+            iconClick = false
+            tappedImage.image = UIImage(named: "open_eye")
+            passTxt.isSecureTextEntry = false
+        }
+        else{
+            iconClick = true
+            tappedImage.image = UIImage(named: "close_eye")
+            passTxt.isSecureTextEntry = true
         }
     }
     
@@ -135,23 +173,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Utilities.styleTextField(emailTxt)
         Utilities.styleTextField(passTxt)
     }
-
-    func setUpVideo() {
-        // Get the path to the resource in the bundle
-        let bundlePath = Bundle.main.path(forResource: "loginbg", ofType: "mp4")
-
-        guard bundlePath != nil else {
-            return
-        }
-        
-        let url = URL(fileURLWithPath: bundlePath!)
-        let item = AVPlayerItem(url: url)
-        videoPlayer = AVPlayer(playerItem: item)
-        videoPlayerLayer = AVPlayerLayer(player: videoPlayer!)
-        videoPlayerLayer?.frame = CGRect(x: -self.view.frame.size.width * 1.5, y: 0, width: self.view.frame.size.width*4, height: self.view.frame.size.height)
-        view.layer.insertSublayer(videoPlayerLayer!, at: 0)
-        videoPlayer?.playImmediately(atRate: 0.3)
-    }
     
     @IBAction func forgetPass(_ sender: Any) {
         activitiyIndicator.isHidden = false
@@ -162,7 +183,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 print("Error while sending reset password")
                 self.errorLabel.text = error?.localizedDescription
                 self.errorLabel.alpha = 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     self.errorLabel.text = ""
                     self.activitiyIndicator.stopAnimating()
                     self.activitiyIndicator.isHidden = true
@@ -171,7 +192,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 print("Successfully send reset password \(String(describing: error?.localizedDescription))")
                 self.errorLabel.text = "Successfully send reset password"
                 self.errorLabel.alpha = 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     self.activitiyIndicator.stopAnimating()
                     self.activitiyIndicator.isHidden = true
                     self.errorLabel.text = ""
