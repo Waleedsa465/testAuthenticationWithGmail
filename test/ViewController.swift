@@ -20,14 +20,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet var uiView: UIView!
-
+    @IBOutlet weak var activitiyIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpVideo()
         setUpElements()
         textFieldDelegate()
         errorLabel.alpha = 0
+        activitiyIndicator.isHidden = true
+        activitiyIndicator.layer.shadowOpacity = 10
+        activitiyIndicator.layer.cornerRadius = 10
 
         if let userDefault = UserDefaults.standard.value(forKey: strLoginKey) as? Bool {
             if userDefault {
@@ -59,6 +62,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func loginBtn(_ sender: Any) {
+        
+        activitiyIndicator.isHidden = false
+        activitiyIndicator.startAnimating()
         let email = emailTxt.text!
         let password = passTxt.text!
 
@@ -66,22 +72,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
             guard let self = self else { return }
             if let error = error {
                 print("Error while signIn")
+                activitiyIndicator.isHidden = false
                 self.errorLabel.text = error.localizedDescription
                 self.errorLabel.alpha = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                     self.errorLabel.text = ""
+                    self.activitiyIndicator.stopAnimating()
+                    self.activitiyIndicator.isHidden = true
                 }
             } else {
                 // Check if the user's email is verified
+                activitiyIndicator.startAnimating()
                 if let user = Auth.auth().currentUser, user.isEmailVerified {
                     // Save the login status
                     UserDefaults.standard.set(email, forKey: strLoginKey)
 
                     // Navigate to the home screen or perform other actions
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
-                    self.navigationController?.setViewControllers([vc], animated: true)
-                    self.navigationController?.isNavigationBarHidden = true
-                    print("Login successfully")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                        self.activitiyIndicator.stopAnimating()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
+                        self.navigationController?.setViewControllers([vc], animated: true)
+                        self.navigationController?.isNavigationBarHidden = true
+                        print("Login successfully")
+                    }
+
                 } else {
                     // User's email is not verified, show a message or initiate the verification process
                     self.errorLabel.text = "Please verify your email before logging in."
@@ -112,8 +126,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func signupBtn(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
-        self.navigationController?.pushViewController(vc, animated: true)
+
     }
 
     func setUpElements() {

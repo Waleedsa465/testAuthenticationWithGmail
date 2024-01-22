@@ -31,6 +31,7 @@
 		5236C6B62B439F98008C1517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B42B439F98008C1517 /* Main.storyboard */; };
 		5236C6B82B439F9D008C1517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B72B439F9D008C1517 /* Assets.xcassets */; };
 		5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B92B439F9D008C1517 /* LaunchScreen.storyboard */; };
+		526F738D2B5E4B23004DFBA2 /* loadinganimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 526F738C2B5E4B23004DFBA2 /* loadinganimation.json */; };
 		EEF188A4D90B27ECBA1232E0 /* Pods_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE19467E79DFE12C5BB4870 /* Pods_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		5236C6B72B439F9D008C1517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5236C6BA2B439F9D008C1517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5236C6BC2B439F9D008C1517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		526F738C2B5E4B23004DFBA2 /* loadinganimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadinganimation.json; sourceTree = "<group>"; };
 		BCE19467E79DFE12C5BB4870 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8213B909E39953D10FD7526 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				521BA6D92B43DA6600682914 /* DataModel.swift */,
+				526F738C2B5E4B23004DFBA2 /* loadinganimation.json */,
 				521BA6DB2B43E69800682914 /* Utilities.swift */,
 				521BA6B92B43D13100682914 /* AppUtility.swift */,
 			);
@@ -274,6 +277,7 @@
 				5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */,
 				521BA6B42B43CB1700682914 /* GoogleService-Info.plist in Resources */,
 				5236C6B82B439F9D008C1517 /* Assets.xcassets in Resources */,
+				526F738D2B5E4B23004DFBA2 /* loadinganimation.json in Resources */,
 				5236C6B62B439F98008C1517 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

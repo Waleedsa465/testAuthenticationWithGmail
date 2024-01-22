@@ -17,11 +17,14 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
+        activityIndicator.isHidden = true
+        activityIndicator.layer.shadowOpacity = 10
+        activityIndicator.layer.cornerRadius = 10
         textFieldDelegate()
         Utilities.styleTextField(firstNameTxt)
         Utilities.styleTextField(lastNameTxt)
@@ -86,7 +89,8 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
 
     
     @IBAction func registrationBtn(_ sender: Any) {
-        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         let error = validateFields()
         if error != nil {
             showError(error!)
@@ -99,9 +103,12 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
             
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 if err != nil {
+                    self.activityIndicator.isHidden = false
                     self.showError("Error creating user")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                         self.errorLabel.text = ""
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
                     }
                 }
                 else {
@@ -132,6 +139,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
                             }
                         }
                     }
+                    self.activityIndicator.stopAnimating()
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                     let nav = UINavigationController(rootViewController: vc)
                     print("Successfully create user")
