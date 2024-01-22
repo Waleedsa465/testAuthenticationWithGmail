@@ -122,7 +122,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
                     })
                     
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid, "Password" : password ]) { (error) in
+                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid, "Password" : password, "Email" : email ]) { (error) in
                         
                         if error != nil {
                             // Show error message
