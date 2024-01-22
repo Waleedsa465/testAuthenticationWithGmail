@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-test/Pods-test-frameworks.sh
+${PODS_ROOT}/Target Support Files/Pods-BirdsApps/Pods-BirdsApps-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework

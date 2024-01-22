@@ -1,0 +1,6 @@
+framework module Pods_BirdsApps {
+  umbrella header "Pods-BirdsApps-umbrella.h"
+
+  export *
+  module * { export * }
+}

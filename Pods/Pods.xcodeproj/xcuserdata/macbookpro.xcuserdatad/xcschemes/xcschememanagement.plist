@@ -151,7 +151,7 @@
 			<key>orderHint</key>
 			<integer>23</integer>
 		</dict>
-		<key>Pods-test.xcscheme</key>
+		<key>Pods-BirdsApps.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
