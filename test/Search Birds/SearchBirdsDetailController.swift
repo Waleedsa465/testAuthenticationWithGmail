@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 import Kingfisher
 import FirebaseDatabase
 
@@ -173,6 +174,13 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
     }
     
     func soldFunc() {
+        guard let currentUser = Auth.auth().currentUser else {
+            // Handle the case where the current user is not available
+            showAlert(message: "User not authenticated.")
+            return
+        }
+        let userUID = currentUser.uid
+        
         var dic: [String: Any] = [
             "Certificate_No": dataForNextViewController.certificate_No,
             "Bird_ID": dataForNextViewController.bird_ID,
@@ -188,20 +196,9 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
             "buyer_Phone_Number": buyerPhoneNumber.text!,
             "Sold_or_Expire" : soldorExpireDateTxt.text!
         ]
-        
-//        if let buyerName = buyerNameText.text, !buyerName.isEmpty {
-//            dic["buyer_Name"] = buyerName
-//            print("is not empty")
-//        }
-//
-//        // Add buyer phone number to the dictionary if it's not empty
-//        if let buyerPhoneNumber = buyerPhoneNumber.text, !buyerPhoneNumber.isEmpty {
-//            dic["buyer_Phone_Number"] = buyerPhoneNumber
-//        }
-//        print("\(String(describing: buyerNameText.text))")
 
         
-        let soldDataRef = self.ref.child("SoldData").childByAutoId()
+        let soldDataRef = self.ref.child("users").child(userUID).child("SoldData").childByAutoId()
 
         soldDataRef.setValue(dic) { (error, _) in
             if let error = error {
@@ -232,6 +229,13 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
     }
     
     func expireFunc() {
+        guard let currentUser = Auth.auth().currentUser else {
+            // Handle the case where the current user is not available
+            showAlert(message: "User not authenticated.")
+            return
+        }
+        let userUID = currentUser.uid
+        
         let dic: [String: Any] = [
             "Certificate_No": dataForNextViewController.certificate_No,
             "Bird_ID": dataForNextViewController.bird_ID,
@@ -247,7 +251,7 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         ]
         
 
-        let soldDataRef = self.ref.child("ExpireData").childByAutoId()
+        let soldDataRef = self.ref.child("users").child(userUID).child("ExpireData").childByAutoId()
 
         soldDataRef.setValue(dic) { (error, _) in
             if error != nil {

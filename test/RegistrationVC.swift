@@ -12,6 +12,9 @@ import FirebaseDatabase
 
 class RegistrationVC: UIViewController,UITextFieldDelegate {
     
+    var ref: DatabaseReference!
+    
+    
     @IBOutlet weak var firstNameTxt: UITextField!
     @IBOutlet weak var lastNameTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -30,7 +33,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
         Utilities.styleTextField(lastNameTxt)
         Utilities.styleTextField(emailTxt)
         Utilities.styleTextField(passTxt)
-        
+        ref = Database.database().reference()
         
         // Do any additional setup after loading the view.
     }
@@ -127,16 +130,19 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
                             }
                         }
                     })
+                    let databaseRef = Database.database().reference()
                     
-                    let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid, "Password" : password, "Email" : email ]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.showError("Error saving user data")
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
-                                self.errorLabel.text = ""
-                            }
+                    let userData = ["firstname": firstName,
+                                    "lastname": lastName,
+                                    "Email": email,
+                                    "Password":password,
+                                    "uid": result!.user.uid
+                                        ]
+
+                                        databaseRef.child("users").child(result!.user.uid).setValue(userData) { [weak self] (error, ref) in
+                                            guard self != nil else { return }
+                        if let error = error {
+                            print("Error saving user data to Realtime Database: \(error.localizedDescription)")
                         }
                     }
                     self.activityIndicator.stopAnimating()

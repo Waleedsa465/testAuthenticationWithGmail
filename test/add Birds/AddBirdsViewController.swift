@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import AVFoundation
 import AVKit
+import FirebaseDatabase
 
 class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -228,6 +229,14 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
 
     func saveImage(name: String, profileURL: URL, completion: @escaping ((_ url: URL?)-> ())) {
+        guard let currentUser = Auth.auth().currentUser else {
+            // Handle the case where the current user is not available
+            completion(nil)
+            return
+        }
+
+        let userUID = currentUser.uid
+
         let dic: [String: Any] = [
             "Certificate_No": certificateNoTextField.text!,
             "Bird_ID": birdIDTextField.text!,
@@ -238,12 +247,13 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
             "Sex_Determination": sexDeterminedTextField.text!,
             "Accuracy": accuracyTextField.text!,
             "Upload_Date": dateTextField.text!,
-            "UploadCurrentImage": profileURL.absoluteString
+            "UploadCurrentImage": profileURL.absoluteString,
+            "User_UID": userUID
         ]
 
-        self.ref.child("BirdsApp").childByAutoId().setValue(dic)
+        self.ref.child("users").child(userUID).child("BirdsApp").childByAutoId().setValue(dic)
     }
-
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

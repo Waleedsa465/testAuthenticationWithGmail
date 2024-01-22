@@ -7,7 +7,6 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
     var arrData = [SoldBird]()
     var filteredData = [SoldBird]()
     var ref = Database.database().reference()
-    var keyArray: [String] = []
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -17,7 +16,7 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
         UserDefaults.standard.set(true, forKey: strLoginKey)
 
         configureTableView()
-        fetchDataFromFirebase()
+        fetchDataForCurrentUser()
         searchBar.delegate = self
     }
 
@@ -26,8 +25,15 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.dataSource = self
     }
 
-    func fetchDataFromFirebase() {
-        ref.child("SoldData").observe(.value, with: { snapshot in
+    func fetchDataForCurrentUser() {
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+            // Handle the case where the user is not authenticated
+            return
+        }
+
+        let userSoldDataRef = ref.child("users").child(currentUserUID).child("SoldData")
+
+        userSoldDataRef.observe(.value, with: { snapshot in
             guard let data = snapshot.value as? [String: [String: Any]] else {
                 print("Error: Invalid data format")
                 return
@@ -143,16 +149,14 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
                 let criteria = ["Bird_ID": selectedBird.birdID]
                 deleteSoldData(withCriteria: criteria, indexPath: indexPath)
             }))
-            
-            present(alert, animated: true, completion: nil)
 
+            present(alert, animated: true, completion: nil)
         }
     }
 
     // Function to delete data based on specified criteria
-    // Function to delete data based on specified criteria
     func deleteSoldData(withCriteria criteria: [String: Any], indexPath: IndexPath) {
-        let soldDataRef = ref.child("SoldData")
+        let soldDataRef = ref.child("users").child(Auth.auth().currentUser!.uid).child("SoldData")
 
         soldDataRef.queryOrdered(byChild: "Bird_ID").queryEqual(toValue: criteria["Bird_ID"]).observeSingleEvent(of: .value) { snapshot in
             guard let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] else {
@@ -183,8 +187,8 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
 
-
     @IBAction func refreshBtn(_ sender: Any) {
+        self.fetchDataForCurrentUser()
         self.tableView.reloadData()
     }
 }

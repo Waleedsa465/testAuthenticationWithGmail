@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ExpiredBirdsDetailsVC: UIViewController {
     
+    var imgView = ""
     var expireDetail : ExpiredBird!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,19 +24,16 @@ class ExpiredBirdsDetailsVC: UIViewController {
     @IBOutlet weak var accuracyLbl: UILabel!
     @IBOutlet weak var expireDate: UILabel!
     
-    
-    
-    
-    var imgView = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: strLoginKey)
-
+        lblForAllText()
         
+    }
+    
+    func lblForAllText(){
         imageView.layer.cornerRadius = 20
-        
         ownerName.text = ("Owner Name :  \(self.expireDetail.ownerName)")
         sampleType.text = ("Sample Type :  \(self.expireDetail.sampleType)")
         certificateNo.text = ("Certificate :  \(self.expireDetail.certificateNo)")
@@ -44,14 +43,12 @@ class ExpiredBirdsDetailsVC: UIViewController {
         sexDetermination.text = ("Sex :  \(self.expireDetail.sexDetermination)")
         accuracyLbl.text = ("Accuracy :  \(self.expireDetail.accuracy)")
         expireDate.text = ("Expire Date : \(self.expireDetail.Sold_or_Expire)")
-        
         imgView = self.expireDetail.uploadCurrentImage
         
         let placeholderImage = UIImage(named: "placeholderImage")
         if let url = URL(string: imgView) {
             imageView.kf.setImage(with: url, placeholder: placeholderImage)
         }
-        
     }
     
     @IBAction func downloadBTN(_ sender: Any) {

@@ -53,4 +53,10 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    func hashEmail(_ email: String) -> String {
+        // Implement your hashing logic here (e.g., MD5, SHA256)
+        // For simplicity, let's just replace "." and "@" with "_"
+        return email.replacingOccurrences(of: ".", with: "_").replacingOccurrences(of: "@", with: "_")
+    }
+    
 }

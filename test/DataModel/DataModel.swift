@@ -10,8 +10,13 @@ import UIKit
 
 var strForLogin = "isUserLogedIn"
 
-struct userName{
-    let userLogin: String
+struct User {
+    let uid: String
+    let firstname: String
+    let lastname: String
+    let birdsApp: [String: Bird]
+    let expireData: [String: ExpiredBird]
+    let soldData: [String: SoldBird]
 }
 
 struct Bird : Codable {

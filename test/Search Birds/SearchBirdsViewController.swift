@@ -17,7 +17,7 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        fetchDataFromFirebase()
+        fetchDataForCurrentUser()
         searchBar.delegate = self
     }
 
@@ -26,8 +26,15 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
     }
 
-    func fetchDataFromFirebase() {
-        ref.child("BirdsApp").observe(.value, with: { snapshot in
+    func fetchDataForCurrentUser() {
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+            // Handle the case where the user is not authenticated
+            return
+        }
+
+        let userRef = ref.child("users").child(currentUserUID).child("BirdsApp")
+
+        userRef.observe(.value, with: { snapshot in
             guard let data = snapshot.value as? [String: [String: Any]] else {
                 print("Error: Invalid data format")
                 return
@@ -97,7 +104,7 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func refreshBtn(_ sender: Any) {
-        fetchDataFromFirebase()
+        fetchDataForCurrentUser()
         self.tableView.reloadData()
     }
 
@@ -159,36 +166,40 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
       // MARK: - Delete Data
-
     func deleteBird(withCriteria criteria: [String: Any], indexPath: IndexPath) {
-        let birdDataRef = ref.child("BirdsApp")
+           guard let currentUserUID = Auth.auth().currentUser?.uid else {
+               // Handle the case where the user is not authenticated
+               return
+           }
 
-        birdDataRef.queryOrdered(byChild: "Bird_ID").queryEqual(toValue: criteria["Bird_ID"]).observeSingleEvent(of: .value) { snapshot in
-            guard let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] else {
-                print("Error: Unable to get data snapshot")
-                return
-            }
+           let userBirdsRef = ref.child("users").child(currentUserUID).child("BirdsApp")
+           userBirdsRef.queryOrdered(byChild: "Bird_ID").queryEqual(toValue: criteria["Bird_ID"]).observeSingleEvent(of: .value) { snapshot in
+               guard let dataSnapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                   print("Error: Unable to get data snapshot")
+                   return
+               }
 
-            for data in dataSnapshot {
-                data.ref.removeValue { error, _ in
-                    if let error = error {
-                        print("Error deleting bird data: \(error.localizedDescription)")
-                    } else {
-                        self.showAlert(message: "Data Deleted Successfully")
-                        print("Bird data deleted successfully.")
-                    }
-                }
-            }
+               for data in dataSnapshot {
+                   data.ref.removeValue { error, _ in
+                       if let error = error {
+                           print("Error deleting bird data: \(error.localizedDescription)")
+                       } else {
+                           self.showAlert(message: "Data Deleted Successfully")
+                           print("Bird data deleted successfully.")
+                       }
+                   }
+               }
 
-            // Remove from the local arrays
-            self.arrData.remove(at: indexPath.row)
+               // Remove from the local arrays
+               self.arrData.remove(at: indexPath.row)
 
-            // Update the filtered data if applicable
-            if self.isFiltering() {
-                self.filteredData.remove(at: indexPath.row)
-            }
+               // Update the filtered data if applicable
+               if self.isFiltering() {
+                   self.filteredData.remove(at: indexPath.row)
+               }
 
-            // Reload the table view
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }}
+               // Reload the table view
+               self.tableView.deleteRows(at: [indexPath], with: .automatic)
+           }
+       }
+    }
