@@ -45,6 +45,8 @@ class ExpiredBirdsDetailsVC: UIViewController {
         expireDate.text = ("Expire Date : \(self.expireDetail.Sold_or_Expire)")
         imgView = self.expireDetail.uploadCurrentImage
         
+        
+        
         let placeholderImage = UIImage(named: "placeholderImage")
         if let url = URL(string: imgView) {
             imageView.kf.setImage(with: url, placeholder: placeholderImage)

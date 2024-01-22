@@ -22,7 +22,6 @@ class SoldDetailViewController: UIViewController {
     @IBOutlet weak var sexDetermination: UILabel!
     @IBOutlet weak var accuracyLbl: UILabel!
     
-    
 
     
     var imgView = ""

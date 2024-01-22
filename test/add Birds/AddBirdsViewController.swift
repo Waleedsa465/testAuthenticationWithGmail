@@ -17,27 +17,22 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var collectionTextField: UITextField!
     @IBOutlet weak var sexDeterminedTextField: UITextField!
     @IBOutlet weak var accuracyTextField: UITextField!
-
-    
-    var videoPlayer:AVPlayer?
-    var videoPlayerLayer:AVPlayerLayer?
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var arrayData = [Bird]()
     
     var ref = DatabaseReference.init()
-    var spinner: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: strLoginKey)
 
-
-        imageView.layer.cornerRadius = 50
-
-
-
+        activityIndicator.layer.cornerRadius = 10
+        activityIndicator.layer.shadowOpacity = 10
+        borderForAllTextField()
+        imageView.layer.cornerRadius = 20
+        imageView.contentMode = .scaleAspectFill
         setupTextField()
         setupKeyboardHandling()
 
@@ -46,26 +41,39 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
 
-       
+        activityIndicator.isHidden = true
         self.ref = Database.database().reference()
-
-        // Create a spinner programmatically
-        spinner = UIActivityIndicatorView(style: .large)
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.center = view.center
+//        view.addSubview(activityIndicator)
         
     }
     
+    
+    func borderForAllTextField(){
+        dateTextField.attributedPlaceholder = NSAttributedString(string: "Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        certificateNoTextField.attributedPlaceholder = NSAttributedString(string: "Certificate No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        birdIDTextField.attributedPlaceholder = NSAttributedString(string: "Bird ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        ownerNameTextField.attributedPlaceholder = NSAttributedString(string: "Owner Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        birdSpecieTextField.attributedPlaceholder = NSAttributedString(string: "Bird Specie", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        sampleTypeTextField.attributedPlaceholder = NSAttributedString(string: "Sample Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        collectionTextField.attributedPlaceholder = NSAttributedString(string: "Collection Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        sexDeterminedTextField.attributedPlaceholder = NSAttributedString(string: "Male/Female", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        accuracyTextField.attributedPlaceholder = NSAttributedString(string: "Accuracy 99%", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        Utilities.styleTextField(certificateNoTextField)
+        Utilities.styleTextField(birdIDTextField)
+        Utilities.styleTextField(ownerNameTextField)
+        Utilities.styleTextField(birdSpecieTextField)
+        Utilities.styleTextField(sampleTypeTextField)
+        Utilities.styleTextField(collectionTextField)
+        Utilities.styleTextField(sexDeterminedTextField)
+        Utilities.styleTextField(accuracyTextField)
+        Utilities.styleTextField(dateTextField)
+    }
+
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
-
-
-
-
+    
     func setupKeyboardHandling() {
         let textFields = [
             certificateNoTextField,
@@ -183,10 +191,12 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     func uploadImage(_ image: UIImage, completion: @escaping (_ url: URL?)-> ()) {
-        spinner.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
 
         guard let imageData = image.pngData() else {
-            spinner.stopAnimating()
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
             completion(nil)
             return
         }
@@ -199,7 +209,8 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
             guard let self = self else {
                 DispatchQueue.main.async {
                     completion(nil)
-                    self?.spinner.stopAnimating()
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.isHidden = true
                 }
                 return
             }
@@ -207,7 +218,8 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 print("Error while uploading image: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     completion(nil)
-                    self.spinner.stopAnimating()
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                 }
             } else {
                 print("Successfully uploaded image")
@@ -218,7 +230,8 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
                         } else {
                             completion(nil)
                         }
-                        self.spinner.stopAnimating()
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
                         self.clearAllFields()
                         self.showAlert(message: "Data uploaded successfully!")
                     }
@@ -333,6 +346,7 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
         accuracyTextField.text = ""
         dateTextField.text = ""
         imageView.image = nil
+        imageView.image = UIImage(named: "icons8-person-100 (2)")
     }
     
 }

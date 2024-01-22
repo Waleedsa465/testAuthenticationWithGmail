@@ -15,16 +15,11 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sexDetermination: UILabel!
     @IBOutlet weak var accuracyLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var buyerNameText: UITextField!
     @IBOutlet weak var dateTextFields: UITextField!
-    
     @IBOutlet weak var buyerPhoneNumber: UITextField!
-    
     @IBOutlet weak var soldorExpireDateTxt: UITextField!
-    
     
 
     var imgView = ""
@@ -40,6 +35,13 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         
         imageView.layer.cornerRadius = 20
 
+        Utilities.styleTextField(soldorExpireDateTxt)
+        Utilities.styleTextField(buyerPhoneNumber)
+        Utilities.styleTextField(buyerNameText)
+        soldorExpireDateTxt.attributedPlaceholder = NSAttributedString(string: "Sold or Expire Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
+        buyerPhoneNumber.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
+        buyerNameText.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
+        
         self.ref = Database.database().reference()
         buyerNameText.delegate = self
         buyerPhoneNumber.delegate = self

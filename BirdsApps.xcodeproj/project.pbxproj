@@ -55,7 +55,7 @@
 		521BA6D92B43DA6600682914 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		521BA6DB2B43E69800682914 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		521BA6DE2B43EBB500682914 /* MainNaviVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNaviVC.swift; sourceTree = "<group>"; };
-		5236C6AB2B439F98008C1517 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5236C6AB2B439F98008C1517 /* BirdsApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdsApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5236C6AE2B439F98008C1517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5236C6B02B439F98008C1517 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5236C6B22B439F98008C1517 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		5236C6AC2B439F98008C1517 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5236C6AB2B439F98008C1517 /* test.app */,
+				5236C6AB2B439F98008C1517 /* BirdsApps.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,9 +214,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5236C6AA2B439F98008C1517 /* test */ = {
+		5236C6AA2B439F98008C1517 /* BirdsApps */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5236C6BF2B439F9D008C1517 /* Build configuration list for PBXNativeTarget "test" */;
+			buildConfigurationList = 5236C6BF2B439F9D008C1517 /* Build configuration list for PBXNativeTarget "BirdsApps" */;
 			buildPhases = (
 				14DBD64595C2108A470C51AD /* [CP] Check Pods Manifest.lock */,
 				5236C6A72B439F98008C1517 /* Sources */,
@@ -228,9 +228,9 @@
 			);
 			dependencies = (
 			);
-			name = test;
+			name = BirdsApps;
 			productName = test;
-			productReference = 5236C6AB2B439F98008C1517 /* test.app */;
+			productReference = 5236C6AB2B439F98008C1517 /* BirdsApps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -248,7 +248,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5236C6A62B439F98008C1517 /* Build configuration list for PBXProject "test" */;
+			buildConfigurationList = 5236C6A62B439F98008C1517 /* Build configuration list for PBXProject "BirdsApps" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -261,7 +261,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5236C6AA2B439F98008C1517 /* test */,
+				5236C6AA2B439F98008C1517 /* BirdsApps */,
 			);
 		};
 /* End PBXProject section */
@@ -558,7 +558,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5236C6A62B439F98008C1517 /* Build configuration list for PBXProject "test" */ = {
+		5236C6A62B439F98008C1517 /* Build configuration list for PBXProject "BirdsApps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5236C6BD2B439F9D008C1517 /* Debug */,
@@ -567,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5236C6BF2B439F9D008C1517 /* Build configuration list for PBXNativeTarget "test" */ = {
+		5236C6BF2B439F9D008C1517 /* Build configuration list for PBXNativeTarget "BirdsApps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5236C6C02B439F9D008C1517 /* Debug */,
