@@ -154,7 +154,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgetPass(_ sender: Any) {
-        
+        activitiyIndicator.isHidden = false
+        activitiyIndicator.startAnimating()
         let email = emailTxt.text!
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil{
@@ -163,12 +164,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.errorLabel.alpha = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                     self.errorLabel.text = ""
+                    self.activitiyIndicator.stopAnimating()
+                    self.activitiyIndicator.isHidden = true
                 }
             }else{
                 print("Successfully send reset password \(String(describing: error?.localizedDescription))")
                 self.errorLabel.text = "Successfully send reset password"
                 self.errorLabel.alpha = 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                    self.activitiyIndicator.stopAnimating()
+                    self.activitiyIndicator.isHidden = true
                     self.errorLabel.text = ""
                 }
             }
