@@ -308,17 +308,17 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BE9-wg-Bqi">
-                                <rect key="frame" x="0.0" y="30" width="375" height="50"/>
+                                <rect key="frame" x="10" y="30" width="355" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="Aw4-q7-p2H">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="Aw4-q7-p2H">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="yYP-If-14K" id="vPU-pH-RpL"/>
                                         </connections>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBi-UW-QhN">
-                                        <rect key="frame" x="325" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="amR-jE-BuC"/>
                                         </constraints>
@@ -337,9 +337,9 @@
                         <viewLayoutGuide key="safeArea" id="WNn-Cn-muU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="BE9-wg-Bqi" firstAttribute="leading" secondItem="WNn-Cn-muU" secondAttribute="leading" id="1pg-sE-lld"/>
+                            <constraint firstItem="BE9-wg-Bqi" firstAttribute="leading" secondItem="WNn-Cn-muU" secondAttribute="leading" constant="10" id="1pg-sE-lld"/>
                             <constraint firstItem="RVi-hM-o0e" firstAttribute="leading" secondItem="WNn-Cn-muU" secondAttribute="leading" id="MgV-TK-umA"/>
-                            <constraint firstItem="WNn-Cn-muU" firstAttribute="trailing" secondItem="BE9-wg-Bqi" secondAttribute="trailing" id="bMS-8C-VrW"/>
+                            <constraint firstItem="WNn-Cn-muU" firstAttribute="trailing" secondItem="BE9-wg-Bqi" secondAttribute="trailing" constant="10" id="bMS-8C-VrW"/>
                             <constraint firstItem="RVi-hM-o0e" firstAttribute="bottom" secondItem="WNn-Cn-muU" secondAttribute="bottom" id="kU0-tc-I4N"/>
                             <constraint firstItem="RVi-hM-o0e" firstAttribute="trailing" secondItem="WNn-Cn-muU" secondAttribute="trailing" id="mDP-Lb-12J"/>
                             <constraint firstItem="RVi-hM-o0e" firstAttribute="top" secondItem="BE9-wg-Bqi" secondAttribute="bottom" id="wzy-Rc-Ssv"/>
@@ -355,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxb-YC-xS6" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-593" y="1778"/>
+            <point key="canvasLocation" x="-594.39999999999998" y="1777.961019490255"/>
         </scene>
         <!--Search Birds Detail Controller-->
         <scene sceneID="iH7-LU-2C3">
@@ -637,17 +637,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h08-pk-snv">
-                                <rect key="frame" x="0.0" y="30" width="375" height="50"/>
+                                <rect key="frame" x="10" y="30" width="355" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="y7C-Sm-ScI">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="y7C-Sm-ScI">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="csJ-oA-wpP" id="0Pg-8z-sf3"/>
                                         </connections>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGh-yX-tvV">
-                                        <rect key="frame" x="325" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="IFR-lc-uq8"/>
                                         </constraints>
@@ -743,8 +743,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qZA-E4-rd3" firstAttribute="leading" secondItem="gNR-Js-dFA" secondAttribute="leading" id="3WQ-II-H55"/>
-                            <constraint firstItem="h08-pk-snv" firstAttribute="leading" secondItem="gNR-Js-dFA" secondAttribute="leading" id="B5a-b2-nAS"/>
-                            <constraint firstItem="gNR-Js-dFA" firstAttribute="trailing" secondItem="h08-pk-snv" secondAttribute="trailing" id="Bgf-Iv-BO3"/>
+                            <constraint firstItem="h08-pk-snv" firstAttribute="leading" secondItem="gNR-Js-dFA" secondAttribute="leading" constant="10" id="B5a-b2-nAS"/>
+                            <constraint firstItem="gNR-Js-dFA" firstAttribute="trailing" secondItem="h08-pk-snv" secondAttribute="trailing" constant="10" id="Bgf-Iv-BO3"/>
                             <constraint firstItem="qZA-E4-rd3" firstAttribute="trailing" secondItem="gNR-Js-dFA" secondAttribute="trailing" id="R6y-xg-Vtd"/>
                             <constraint firstItem="qZA-E4-rd3" firstAttribute="bottom" secondItem="gNR-Js-dFA" secondAttribute="bottom" id="eVd-ZT-GtJ"/>
                             <constraint firstItem="h08-pk-snv" firstAttribute="top" secondItem="gNR-Js-dFA" secondAttribute="top" constant="10" id="kcR-NR-Fjh"/>
@@ -771,17 +771,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUP-Il-D7T">
-                                <rect key="frame" x="0.0" y="30" width="375" height="50"/>
+                                <rect key="frame" x="10" y="30" width="355" height="50"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="ACq-dW-Zk4">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search By Certificate or Bird Id" translatesAutoresizingMaskIntoConstraints="NO" id="ACq-dW-Zk4">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="IMZ-gT-Su4" id="OPq-kU-Kcn"/>
                                         </connections>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZy-Pf-RdG">
-                                        <rect key="frame" x="325" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="z0y-E3-RNB"/>
                                         </constraints>
@@ -872,9 +872,9 @@
                         <viewLayoutGuide key="safeArea" id="azw-NA-fpW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZUP-Il-D7T" firstAttribute="leading" secondItem="azw-NA-fpW" secondAttribute="leading" id="CE1-Pb-un3"/>
+                            <constraint firstItem="ZUP-Il-D7T" firstAttribute="leading" secondItem="azw-NA-fpW" secondAttribute="leading" constant="10" id="CE1-Pb-un3"/>
                             <constraint firstItem="azw-NA-fpW" firstAttribute="trailing" secondItem="sya-Bw-ei6" secondAttribute="trailing" id="Pv8-V9-gq6"/>
-                            <constraint firstItem="azw-NA-fpW" firstAttribute="trailing" secondItem="ZUP-Il-D7T" secondAttribute="trailing" id="WNB-EM-1wp"/>
+                            <constraint firstItem="azw-NA-fpW" firstAttribute="trailing" secondItem="ZUP-Il-D7T" secondAttribute="trailing" constant="10" id="WNB-EM-1wp"/>
                             <constraint firstItem="ZUP-Il-D7T" firstAttribute="top" secondItem="azw-NA-fpW" secondAttribute="top" constant="10" id="XlK-l9-Y9n"/>
                             <constraint firstItem="sya-Bw-ei6" firstAttribute="leading" secondItem="azw-NA-fpW" secondAttribute="leading" id="aXH-gp-hmf"/>
                             <constraint firstItem="sya-Bw-ei6" firstAttribute="top" secondItem="ZUP-Il-D7T" secondAttribute="bottom" id="eM2-cw-QQY"/>

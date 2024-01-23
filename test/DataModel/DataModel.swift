@@ -15,11 +15,11 @@ struct User : Decodable {
     let firstname : String
     let lastname : String
     let Email : String
-    let ProfileImageURL : String
+    var ProfileImageURL : String
     let Password : String
     let BirdsApp : [String: Bird]?
     let ExpireData : [String: Bird]?
-    let SoldData : [String: Bird]?
+    let SoldData: [String: Bird]?
 }
 
 struct Bird : Codable {

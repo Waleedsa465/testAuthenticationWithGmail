@@ -17,6 +17,7 @@ class ExpiredBirdsViewController: UIViewController, UITableViewDelegate, UITable
 
         configureTableView()
         fetchDataForCurrentUser()
+        searchBar.layer.cornerRadius = 100
         searchBar.delegate = self
     }
 

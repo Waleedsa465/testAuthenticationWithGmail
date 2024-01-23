@@ -32,7 +32,7 @@ class SoldDetailViewController: UIViewController {
         
         imageView.layer.cornerRadius = 20
         activityIndicator.hidesWhenStopped = true
-        
+        allTxtLabel()
         imgView = self.soldData.uploadCurrentImage
         
         let placeholderImage = UIImage(named: "placeholderImage")
