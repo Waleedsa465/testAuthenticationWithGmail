@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Kingfisher
 
 class HomeVC: UIViewController {
 
@@ -8,10 +9,13 @@ class HomeVC: UIViewController {
     var txtData: User!
     var ref = Database.database().reference()
     
+    var imgView = ""
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameLbl: UILabel!
     @IBOutlet weak var lastNameLbl: UILabel!
     @IBOutlet weak var emailAddress: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +24,11 @@ class HomeVC: UIViewController {
         self.firstNameLbl.text = self.txtData?.firstname
         self.lastNameLbl.text = self.txtData?.lastname
         self.emailAddress.text = self.txtData?.Email
+        activityIndicator.isHidden = true
     }
     
     func fetchDataForCurrentUser() {
+
         guard let currentUserUID = Auth.auth().currentUser?.uid else {
             // Handle the case where the user is not authenticated
             return
@@ -38,18 +44,39 @@ class HomeVC: UIViewController {
             }
             self.parseUserData(data)
 
+            // Update UI after data is fetched
             DispatchQueue.main.async {
-                // Update UI after data is fetched
                 self.firstNameLbl.text = ("First Name : \(self.txtData?.firstname ?? "FirstName Not Found")")
                 self.lastNameLbl.text = ("Last Name : \(self.txtData?.lastname ?? "lastname Not Found")")
                 self.emailAddress.text = ("Email Address : \(self.txtData?.Email ?? "Email Address Not Found")")
+
+                let placeholderImage = UIImage(named: "placeholderImage")
+                if let url = URL(string: self.txtData.ProfileImageURL) {
+                    self.activityIndicator.isHidden = false
+                    self.activityIndicator.startAnimating()
+
+                    self.imageView.kf.setImage(with: url, placeholder: placeholderImage, completionHandler: { result in
+                        switch result {
+                        case .success(_):
+                            self.activityIndicator.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                        case .failure(let error):
+                            print("Error loading image: \(error.localizedDescription)")
+                            self.activityIndicator.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                        }
+                    })
+
+                } else {
+                    // Handle invalid URL
+                    self.activityIndicator.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                }
             }
         }) { error in
             print("Error fetching data: \(error.localizedDescription)")
         }
     }
-
-
     func parseUserData(_ data: [String: Any]) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data)

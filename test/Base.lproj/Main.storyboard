@@ -926,13 +926,21 @@
                                     <constraint firstAttribute="height" constant="200" id="oQq-li-86J"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2023-12-23 at 7.53.52 PM" translatesAutoresizingMaskIntoConstraints="NO" id="pXO-y4-n34">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pXO-y4-n34">
                                 <rect key="frame" x="112.5" y="80" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Ak0-ih-x5g"/>
                                     <constraint firstAttribute="width" constant="150" id="Qng-Cp-WCC"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="j7m-VP-jIl">
+                                <rect key="frame" x="162.5" y="130" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QmJ-pG-ITe"/>
+                                    <constraint firstAttribute="width" constant="50" id="rOj-mN-AzB"/>
+                                </constraints>
+                                <color key="color" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQD-Mq-eEF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -945,10 +953,13 @@
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="trailing" secondItem="KTH-zm-dSB" secondAttribute="trailing" constant="20" id="PjO-wW-asZ"/>
                             <constraint firstItem="pXO-y4-n34" firstAttribute="centerX" secondItem="DUY-LY-goL" secondAttribute="centerX" id="TW7-Yl-cja"/>
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="bottom" secondItem="KTH-zm-dSB" secondAttribute="bottom" constant="100" id="dAJ-VP-aKh"/>
+                            <constraint firstItem="j7m-VP-jIl" firstAttribute="centerX" secondItem="DUY-LY-goL" secondAttribute="centerX" id="hoX-Vz-QAl"/>
+                            <constraint firstItem="j7m-VP-jIl" firstAttribute="centerY" secondItem="DUY-LY-goL" secondAttribute="centerY" constant="-178.5" id="vVk-KN-8PH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pec-6u-AOk"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="j7m-VP-jIl" id="tin-Jf-byc"/>
                         <outlet property="emailAddress" destination="MTv-N3-y6R" id="dHo-ZS-Qtw"/>
                         <outlet property="firstNameLbl" destination="cwe-tF-vFb" id="BTd-jN-vba"/>
                         <outlet property="imageView" destination="pXO-y4-n34" id="riu-ua-rKK"/>
