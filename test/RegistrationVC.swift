@@ -29,6 +29,8 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     override func viewDidLoad() {
         super.viewDidLoad()
         imageIconClose()
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 70
         errorLabel.alpha = 0
         activityIndicator.isHidden = true

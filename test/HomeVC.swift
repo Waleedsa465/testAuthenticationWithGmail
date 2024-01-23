@@ -20,7 +20,9 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDataForCurrentUser()
-        imageView.layer.cornerRadius = 75
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 70
         self.firstNameLbl.text = self.txtData?.firstname
         self.lastNameLbl.text = self.txtData?.lastname
         self.emailAddress.text = self.txtData?.Email
