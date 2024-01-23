@@ -21,7 +21,7 @@ class SoldDetailViewController: UIViewController {
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var sexDetermination: UILabel!
     @IBOutlet weak var accuracyLbl: UILabel!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     
     var imgView = ""
@@ -31,8 +31,23 @@ class SoldDetailViewController: UIViewController {
         super.viewDidLoad()
         
         imageView.layer.cornerRadius = 20
+        activityIndicator.hidesWhenStopped = true
         
+        imgView = self.soldData.uploadCurrentImage
         
+        let placeholderImage = UIImage(named: "placeholderImage")
+        if let url = URL(string: imgView) {
+            // Start the activity indicator
+            activityIndicator.startAnimating()
+            imageView.kf.setImage(with: url, placeholder: placeholderImage, completionHandler: { _ in
+                // Stop the activity indicator after the image is loaded
+                self.activityIndicator.stopAnimating()
+            })
+        }
+
+    }
+    
+    func allTxtLabel(){
         buyerName.text = ("Buyer Name :  \(self.soldData.buyerName)")
         buyerPhoneNumber.text = ("PH :  \(self.soldData.buyerPhoneNumber)")
         certificateNo.text = ("Certificate :  \(self.soldData.certificateNo)")
@@ -43,14 +58,6 @@ class SoldDetailViewController: UIViewController {
         collectionLabel.text = ("Collection :  \(self.soldData.collection)")
         sexDetermination.text = ("Sex Determination :  \(self.soldData.sexDetermination)")
         accuracyLbl.text = ("Accuracy :  \(self.soldData.accuracy)")
-        imgView = self.soldData.uploadCurrentImage
-        
-        let placeholderImage = UIImage(named: "placeholderImage")
-        if let url = URL(string: imgView) {
-            imageView.kf.setImage(with: url, placeholder: placeholderImage)
-            print(imageView!)
-        }
-
     }
     
     

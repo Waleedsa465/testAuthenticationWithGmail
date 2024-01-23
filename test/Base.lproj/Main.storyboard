@@ -184,7 +184,7 @@
                                 </constraints>
                                 <color key="color" systemColor="viewFlipsideBackgroundColor"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2023-12-23 at 7.53.52 PM" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Dk-Bk1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-person-100 (2)" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Dk-Bk1">
                                 <rect key="frame" x="112.5" y="99" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="blf-7Z-IKC"/>
@@ -560,6 +560,14 @@
                                     <constraint firstItem="MhK-pN-bgu" firstAttribute="width" secondItem="5k7-LO-YUG" secondAttribute="width" id="s8s-hp-1rV"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Dkk-OJ-eR7">
+                                <rect key="frame" x="162.5" y="140" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Kqo-23-fuN"/>
+                                    <constraint firstAttribute="height" constant="50" id="nN7-8b-Cz8"/>
+                                </constraints>
+                                <color key="color" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rOn-q5-0J0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -568,13 +576,16 @@
                             <constraint firstItem="5k7-LO-YUG" firstAttribute="trailing" secondItem="rOn-q5-0J0" secondAttribute="trailing" id="GgY-s1-94V"/>
                             <constraint firstItem="5k7-LO-YUG" firstAttribute="bottom" secondItem="rOn-q5-0J0" secondAttribute="bottom" id="KGc-vW-fgR"/>
                             <constraint firstItem="rOn-q5-0J0" firstAttribute="trailing" secondItem="oSZ-rO-Tek" secondAttribute="trailing" constant="20" id="MPm-Bd-29e"/>
+                            <constraint firstItem="Dkk-OJ-eR7" firstAttribute="centerY" secondItem="OnJ-3t-atS" secondAttribute="centerY" constant="-168.5" id="RKa-dv-0Lv"/>
                             <constraint firstItem="5k7-LO-YUG" firstAttribute="top" secondItem="oSZ-rO-Tek" secondAttribute="bottom" id="b52-av-Azv"/>
                             <constraint firstItem="oSZ-rO-Tek" firstAttribute="leading" secondItem="rOn-q5-0J0" secondAttribute="leading" constant="20" id="dqv-fI-ghm"/>
                             <constraint firstItem="oSZ-rO-Tek" firstAttribute="top" secondItem="rOn-q5-0J0" secondAttribute="top" constant="20" id="lWD-ju-JAB"/>
+                            <constraint firstItem="Dkk-OJ-eR7" firstAttribute="centerX" secondItem="OnJ-3t-atS" secondAttribute="centerX" id="w0R-a0-jJC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="accuracyLbl" destination="1wb-LH-5BL" id="o5n-0Z-Uwd"/>
+                        <outlet property="activityIndicator" destination="Dkk-OJ-eR7" id="Z41-oT-9fr"/>
                         <outlet property="birdId" destination="i5a-cu-dS8" id="zpz-js-oqB"/>
                         <outlet property="birdSpecie" destination="PMt-1U-2xD" id="TgX-Rc-w0Z"/>
                         <outlet property="buyerNameText" destination="kQd-lB-XuO" id="fce-qQ-9co"/>
@@ -1095,6 +1106,14 @@
                                     <action selector="captureScreenshotTapped:" destination="Hb5-UZ-6Dx" eventType="touchUpInside" id="db1-bt-p54"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DqH-U1-veJ">
+                                <rect key="frame" x="162.5" y="140" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="AiY-M8-gFN"/>
+                                    <constraint firstAttribute="height" constant="50" id="mkD-gc-LBR"/>
+                                </constraints>
+                                <color key="color" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BZp-Yw-oLK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1110,12 +1129,14 @@
                             <constraint firstItem="JGB-gf-l8t" firstAttribute="top" secondItem="hcQ-Ic-EjO" secondAttribute="bottom" id="GQo-JU-Ti2"/>
                             <constraint firstItem="BZp-Yw-oLK" firstAttribute="trailing" secondItem="s67-wH-vHg" secondAttribute="trailing" constant="20" id="HPo-qK-URQ"/>
                             <constraint firstItem="JGB-gf-l8t" firstAttribute="leading" secondItem="BZp-Yw-oLK" secondAttribute="leading" constant="20" id="L1O-8c-9Wj"/>
+                            <constraint firstItem="DqH-U1-veJ" firstAttribute="centerY" secondItem="Cty-HR-n9k" secondAttribute="centerY" constant="-168.5" id="L5L-qe-IdP"/>
                             <constraint firstItem="E7o-de-5QR" firstAttribute="top" secondItem="s67-wH-vHg" secondAttribute="bottom" id="XUK-YF-n06"/>
                             <constraint firstItem="s67-wH-vHg" firstAttribute="top" secondItem="Qwp-TO-EKm" secondAttribute="bottom" id="YVR-58-Jqz"/>
                             <constraint firstItem="UMn-1J-G0b" firstAttribute="leading" secondItem="BZp-Yw-oLK" secondAttribute="leading" constant="20" id="Yud-yI-xb8"/>
                             <constraint firstItem="Qwp-TO-EKm" firstAttribute="leading" secondItem="BZp-Yw-oLK" secondAttribute="leading" constant="20" id="ZWe-yw-Dho"/>
                             <constraint firstItem="hcQ-Ic-EjO" firstAttribute="top" secondItem="E7o-de-5QR" secondAttribute="bottom" id="cQ4-jK-nC0"/>
                             <constraint firstItem="E7o-de-5QR" firstAttribute="leading" secondItem="BZp-Yw-oLK" secondAttribute="leading" constant="20" id="eTA-gc-mgc"/>
+                            <constraint firstItem="DqH-U1-veJ" firstAttribute="centerX" secondItem="Cty-HR-n9k" secondAttribute="centerX" id="gxU-8a-e3c"/>
                             <constraint firstItem="BZp-Yw-oLK" firstAttribute="trailing" secondItem="hcQ-Ic-EjO" secondAttribute="trailing" constant="20" id="jex-TM-8WG"/>
                             <constraint firstItem="BZp-Yw-oLK" firstAttribute="trailing" secondItem="UMn-1J-G0b" secondAttribute="trailing" constant="20" id="mKH-ig-D8k"/>
                             <constraint firstItem="wYQ-vM-RQv" firstAttribute="leading" secondItem="BZp-Yw-oLK" secondAttribute="leading" constant="20" id="oy0-li-HjR"/>
@@ -1124,6 +1145,7 @@
                     </view>
                     <connections>
                         <outlet property="accuracyLbl" destination="HB1-RQ-iio" id="adi-zu-eGy"/>
+                        <outlet property="activityIndicator" destination="DqH-U1-veJ" id="mGA-Ns-agK"/>
                         <outlet property="birdIdLBL" destination="bPL-fu-VM0" id="SSL-V1-ABZ"/>
                         <outlet property="birdSpecieLbl" destination="DqX-l2-Ohc" id="iEh-In-TpU"/>
                         <outlet property="buyerName" destination="2QT-Fs-bYP" id="vfW-iq-iOD"/>
@@ -1445,6 +1467,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="qM7-vh-YSq">
+                                <rect key="frame" x="162.5" y="140" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mpq-RB-e7y"/>
+                                    <constraint firstAttribute="width" constant="50" id="xox-zB-nY2"/>
+                                </constraints>
+                                <color key="color" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uDI-Sb-1VL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1456,6 +1486,7 @@
                             <constraint firstItem="C4F-Ep-uQS" firstAttribute="top" secondItem="OqX-rt-k0F" secondAttribute="bottom" constant="10" id="Abw-HF-Hgc"/>
                             <constraint firstItem="OqX-rt-k0F" firstAttribute="top" secondItem="bcJ-9t-qG2" secondAttribute="bottom" id="DMn-Xd-ER5"/>
                             <constraint firstItem="uDI-Sb-1VL" firstAttribute="trailing" secondItem="OqX-rt-k0F" secondAttribute="trailing" constant="20" id="HEY-Pq-340"/>
+                            <constraint firstItem="qM7-vh-YSq" firstAttribute="centerX" secondItem="oEp-Mf-PbO" secondAttribute="centerX" id="LES-mK-FKv"/>
                             <constraint firstItem="bcJ-9t-qG2" firstAttribute="top" secondItem="naz-vY-1kd" secondAttribute="bottom" id="LbK-G1-eav"/>
                             <constraint firstItem="cvE-ff-XA0" firstAttribute="top" secondItem="uDI-Sb-1VL" secondAttribute="top" constant="20" id="Orb-gB-QeM"/>
                             <constraint firstItem="C4F-Ep-uQS" firstAttribute="leading" secondItem="uDI-Sb-1VL" secondAttribute="leading" constant="20" id="PLY-WB-QCb"/>
@@ -1470,10 +1501,12 @@
                             <constraint firstItem="uDI-Sb-1VL" firstAttribute="trailing" secondItem="0Be-SO-ACE" secondAttribute="trailing" constant="20" id="oEe-fH-u4N"/>
                             <constraint firstItem="skI-Mb-Npa" firstAttribute="leading" secondItem="uDI-Sb-1VL" secondAttribute="leading" constant="20" id="pXu-g6-bsm"/>
                             <constraint firstItem="OqX-rt-k0F" firstAttribute="leading" secondItem="uDI-Sb-1VL" secondAttribute="leading" constant="20" id="uqM-gC-Q6y"/>
+                            <constraint firstItem="qM7-vh-YSq" firstAttribute="centerY" secondItem="oEp-Mf-PbO" secondAttribute="centerY" constant="-168.5" id="w7p-jF-9LT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="accuracyLbl" destination="rc3-uW-l8P" id="gHp-PZ-b14"/>
+                        <outlet property="activityIndicator" destination="qM7-vh-YSq" id="sN0-0e-9gA"/>
                         <outlet property="birdID" destination="3Mn-hz-jvd" id="LNQ-yX-vbM"/>
                         <outlet property="birdSpecie" destination="Xsi-0t-Tzd" id="m6R-Fn-M13"/>
                         <outlet property="certificateNo" destination="a01-c5-Pl9" id="R80-eA-oQB"/>

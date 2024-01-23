@@ -20,6 +20,7 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dateTextFields: UITextField!
     @IBOutlet weak var buyerPhoneNumber: UITextField!
     @IBOutlet weak var soldorExpireDateTxt: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
 
     var imgView = ""
@@ -32,24 +33,34 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         UserDefaults.standard.set(true, forKey: strLoginKey)
-        
+        activityIndicator.hidesWhenStopped = true
+        allTxtLabel()
         imageView.layer.cornerRadius = 20
-
-        Utilities.styleTextField(soldorExpireDateTxt)
-        Utilities.styleTextField(buyerPhoneNumber)
-        Utilities.styleTextField(buyerNameText)
-        soldorExpireDateTxt.attributedPlaceholder = NSAttributedString(string: "Sold or Expire Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        buyerPhoneNumber.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        buyerNameText.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        
         self.ref = Database.database().reference()
-        buyerNameText.delegate = self
-        buyerPhoneNumber.delegate = self
-        
         setupKeyboardHandling()
         setupTextField()
+        imgView = self.dataForNextViewController.uploadCurrentImage
         
-
+        let placeholderImage = UIImage(named: "placeholderImage")
+        if let url = URL(string: imgView) {
+            // Start the activity indicator
+            activityIndicator.startAnimating()
+            imageView.kf.setImage(with: url, placeholder: placeholderImage, completionHandler: { _ in
+                // Stop the activity indicator after the image is loaded
+                self.activityIndicator.stopAnimating()
+            })
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+        let tapGestureRecognizers = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        scrollView.addGestureRecognizer(tapGestureRecognizers)
+//        activityIndicator.stopAnimating()
+    }
+    
+    func allTxtLabel(){
         ownerName.text = ("Owner Name :  \(self.dataForNextViewController.owner_Name)")
         sampleType.text = ("Sample Type :  \(self.dataForNextViewController.sample_Type)")
         certificateLbl.text = ("Certificate :  \(self.dataForNextViewController.certificate_No)")
@@ -59,23 +70,23 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         sexDetermination.text = ("Sex :  \(self.dataForNextViewController.sex_Determination)")
         accuracyLbl.text = ("Accuracy :  \(self.dataForNextViewController.accuracy)")
         dateLbl.text = ("Upload Date :  \(self.dataForNextViewController.upload_Date)")
-    
-        imgView = self.dataForNextViewController.uploadCurrentImage
-
-        let placeholderImage = UIImage(named: "placeholderImage")
-        if let url = URL(string: imgView) {
-            imageView.kf.setImage(with: url, placeholder: placeholderImage)
-        }
         
+        Utilities.styleTextField(soldorExpireDateTxt)
+        Utilities.styleTextField(buyerPhoneNumber)
+        Utilities.styleTextField(buyerNameText)
         
+        soldorExpireDateTxt.attributedPlaceholder = NSAttributedString(string: "Sold or Expire Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
+        buyerPhoneNumber.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
+        buyerNameText.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        let tapGestureRecognizers = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        scrollView.addGestureRecognizer(tapGestureRecognizers)
+        buyerNameText.delegate = self
+        buyerPhoneNumber.delegate = self
     }
+    
+    func imgeLoadFromFirebase(){
+        
+    }
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)

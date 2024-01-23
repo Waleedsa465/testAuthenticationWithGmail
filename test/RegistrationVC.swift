@@ -44,6 +44,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
+        activityIndicator.hidesWhenStopped = true
         
         // Do any additional setup after loading the view.
     }
@@ -55,9 +56,33 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     func showImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+
+        // Create an action sheet with options for choosing from the photo library or taking a photo with the camera
+        let actionSheet = UIAlertController(title: "Select Image", message: nil, preferredStyle: .actionSheet)
+
+        // Option to choose from photo library
+        actionSheet.addAction(UIAlertAction(title: "Choose from Library", style: .default, handler: { [weak self] (_) in
+            guard let self = self else { return }
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }))
+
+        // Option to take a photo with the camera if available
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] (_) in
+                guard let self = self else { return }
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }))
+        }
+
+        // Option to cancel
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // Present the action sheet
+        present(actionSheet, animated: true, completion: nil)
     }
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -161,9 +186,14 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         return true
     }
     @IBAction func registrationBtn(_ sender: Any) {
+        activityIndicator.startAnimating()
         let error = validateFields()
         if error != nil {
-            showError(error!)
+            self.showError(error!)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.activityIndicator.stopAnimating()
+                self.errorLabel.text = ""
+            }
         } else {
             let firstName = firstNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -173,14 +203,27 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 if err != nil {
                     self.showError("Error creating user")
-                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                        self.activityIndicator.stopAnimating()
+                        self.errorLabel.text = ""
+                    }
+                    } else {
+                        
                     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                         if let error = error {
                             print("Error sending verification email: \(error.localizedDescription)")
                             self.showError(error.localizedDescription)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                                self.activityIndicator.stopAnimating()
+                                self.errorLabel.text = ""
+                            }
                         } else {
                             print("Verification email sent successfully.")
                             self.showError("Verification email sent successfully.")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                                self.activityIndicator.stopAnimating()
+                                self.errorLabel.text = ""
+                            }
                         }
                     })
 
@@ -202,7 +245,9 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
                                 if let error = error {
                                     print("Error saving user data to Realtime Database: \(error.localizedDescription)")
                                 } else {
+                                    
                                     print("User data saved to Realtime Database successfully.")
+                                    
                                 }
                             }
 

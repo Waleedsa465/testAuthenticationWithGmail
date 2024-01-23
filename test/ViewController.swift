@@ -148,14 +148,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         if let error = error {
                             print("Error sending verification email: \(error.localizedDescription)")
                             self.errorLabel.text = error.localizedDescription
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                                 self.errorLabel.text = ""
+                                self.activitiyIndicator.stopAnimating()
+                                self.activitiyIndicator.isHidden = true
+                                
                             }
                         } else {
                             print("Verification email sent successfully.")
                             self.errorLabel.text = "Verification email sent successfully."
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 4){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                                 self.errorLabel.text = ""
+                                self.activitiyIndicator.stopAnimating()
+                                self.activitiyIndicator.isHidden = true
                             }
                         }
                     })

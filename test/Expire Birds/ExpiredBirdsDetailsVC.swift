@@ -23,12 +23,23 @@ class ExpiredBirdsDetailsVC: UIViewController {
     @IBOutlet weak var sexDetermination: UILabel!
     @IBOutlet weak var accuracyLbl: UILabel!
     @IBOutlet weak var expireDate: UILabel!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: strLoginKey)
         lblForAllText()
+        activityIndicator.hidesWhenStopped = true
+        
+        let placeholderImage = UIImage(named: "placeholderImage")
+        if let url = URL(string: imgView) {
+            // Start the activity indicator
+            activityIndicator.startAnimating()
+            imageView.kf.setImage(with: url, placeholder: placeholderImage, completionHandler: { _ in
+                // Stop the activity indicator after the image is loaded
+                self.activityIndicator.stopAnimating()
+            })
+        }
         
     }
     
@@ -44,13 +55,6 @@ class ExpiredBirdsDetailsVC: UIViewController {
         accuracyLbl.text = ("Accuracy :  \(self.expireDetail.accuracy)")
         expireDate.text = ("Expire Date : \(self.expireDetail.Sold_or_Expire)")
         imgView = self.expireDetail.uploadCurrentImage
-        
-        
-        
-        let placeholderImage = UIImage(named: "placeholderImage")
-        if let url = URL(string: imgView) {
-            imageView.kf.setImage(with: url, placeholder: placeholderImage)
-        }
     }
     
     @IBAction func downloadBTN(_ sender: Any) {
