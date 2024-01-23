@@ -8,6 +8,7 @@ class HomeVC: UIViewController {
     var txtData: User!
     var ref = Database.database().reference()
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameLbl: UILabel!
     @IBOutlet weak var lastNameLbl: UILabel!
     @IBOutlet weak var emailAddress: UILabel!
@@ -15,6 +16,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDataForCurrentUser()
+        imageView.layer.cornerRadius = 75
         self.firstNameLbl.text = self.txtData?.firstname
         self.lastNameLbl.text = self.txtData?.lastname
         self.emailAddress.text = self.txtData?.Email

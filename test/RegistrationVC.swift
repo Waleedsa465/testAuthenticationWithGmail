@@ -16,6 +16,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
     var iconClick = false
     let imageIcon = UIImageView()
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameTxt: UITextField!
     @IBOutlet weak var lastNameTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
@@ -26,6 +27,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageIconClose()
+        imageView.layer.cornerRadius = 70
         errorLabel.alpha = 0
         activityIndicator.isHidden = true
         activityIndicator.layer.shadowOpacity = 10
