@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import AVKit
 import AVFoundation
+import Lottie
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var iconClick = false
     let imageIcon = UIImageView()
 
+    @IBOutlet weak var animationView: LottieAnimationView!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -31,8 +33,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textFieldDelegate()
         errorLabel.alpha = 0
         activitiyIndicator.isHidden = true
+        animationView.layer.cornerRadius = 20
         activitiyIndicator.layer.shadowOpacity = 10
         activitiyIndicator.layer.cornerRadius = 10
+        
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.play()
 
         if let userDefault = UserDefaults.standard.value(forKey: strLoginKey) as? Bool {
             if userDefault {

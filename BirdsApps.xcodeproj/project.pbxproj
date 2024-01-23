@@ -24,13 +24,14 @@
 		521BA6D72B43DA4C00682914 /* SoldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BA6D42B43DA4C00682914 /* SoldTableViewCell.swift */; };
 		521BA6DA2B43DA6600682914 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BA6D92B43DA6600682914 /* DataModel.swift */; };
 		521BA6DC2B43E69800682914 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BA6DB2B43E69800682914 /* Utilities.swift */; };
-		521BA6DF2B43EBB500682914 /* MainNaviVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BA6DE2B43EBB500682914 /* MainNaviVC.swift */; };
 		5236C6AF2B439F98008C1517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236C6AE2B439F98008C1517 /* AppDelegate.swift */; };
 		5236C6B12B439F98008C1517 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236C6B02B439F98008C1517 /* SceneDelegate.swift */; };
 		5236C6B32B439F98008C1517 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5236C6B22B439F98008C1517 /* ViewController.swift */; };
 		5236C6B62B439F98008C1517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B42B439F98008C1517 /* Main.storyboard */; };
 		5236C6B82B439F9D008C1517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B72B439F9D008C1517 /* Assets.xcassets */; };
 		5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B92B439F9D008C1517 /* LaunchScreen.storyboard */; };
+		52A86CB82B5FD052005525FE /* birdAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 52A86CB72B5FD052005525FE /* birdAnimation.json */; };
+		52A86CBA2B5FD20A005525FE /* registerSuccessfully.json in Resources */ = {isa = PBXBuildFile; fileRef = 52A86CB92B5FD20A005525FE /* registerSuccessfully.json */; };
 		91AF20B6555294DC41226B67 /* Pods_BirdsApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2D02D83F586D1D66F5CAF /* Pods_BirdsApps.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +55,6 @@
 		521BA6D42B43DA4C00682914 /* SoldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTableViewCell.swift; sourceTree = "<group>"; };
 		521BA6D92B43DA6600682914 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		521BA6DB2B43E69800682914 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		521BA6DE2B43EBB500682914 /* MainNaviVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNaviVC.swift; sourceTree = "<group>"; };
 		5236C6AB2B439F98008C1517 /* BirdsApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdsApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5236C6AE2B439F98008C1517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5236C6B02B439F98008C1517 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +63,8 @@
 		5236C6B72B439F9D008C1517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5236C6BA2B439F9D008C1517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5236C6BC2B439F9D008C1517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52A86CB72B5FD052005525FE /* birdAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = birdAnimation.json; sourceTree = "<group>"; };
+		52A86CB92B5FD20A005525FE /* registerSuccessfully.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registerSuccessfully.json; sourceTree = "<group>"; };
 		7ECF2136F3F8D947784A3200 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
 		86E2D02D83F586D1D66F5CAF /* Pods_BirdsApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BirdsApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB48BC292025D77ED4D9A4DE /* Pods-BirdsApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BirdsApps.debug.xcconfig"; path = "Target Support Files/Pods-BirdsApps/Pods-BirdsApps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,19 +147,13 @@
 		521BA6D82B43DA5700682914 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				52A86CB72B5FD052005525FE /* birdAnimation.json */,
+				52A86CB92B5FD20A005525FE /* registerSuccessfully.json */,
 				521BA6D92B43DA6600682914 /* DataModel.swift */,
 				521BA6DB2B43E69800682914 /* Utilities.swift */,
 				521BA6B92B43D13100682914 /* AppUtility.swift */,
 			);
 			path = DataModel;
-			sourceTree = "<group>";
-		};
-		521BA6DD2B43EB9600682914 /* navigationVC */ = {
-			isa = PBXGroup;
-			children = (
-				521BA6DE2B43EBB500682914 /* MainNaviVC.swift */,
-			);
-			path = navigationVC;
 			sourceTree = "<group>";
 		};
 		5236C6A22B439F98008C1517 = {
@@ -181,7 +177,6 @@
 		5236C6AD2B439F98008C1517 /* test */ = {
 			isa = PBXGroup;
 			children = (
-				521BA6DD2B43EB9600682914 /* navigationVC */,
 				521BA6D82B43DA5700682914 /* DataModel */,
 				521BA6D12B43DA3F00682914 /* cells */,
 				521BA6CD2B43D96100682914 /* TabbarVC */,
@@ -276,7 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */,
+				52A86CBA2B5FD20A005525FE /* registerSuccessfully.json in Resources */,
 				521BA6B42B43CB1700682914 /* GoogleService-Info.plist in Resources */,
+				52A86CB82B5FD052005525FE /* birdAnimation.json in Resources */,
 				5236C6B82B439F9D008C1517 /* Assets.xcassets in Resources */,
 				5236C6B62B439F98008C1517 /* Main.storyboard in Resources */,
 			);
@@ -338,7 +335,6 @@
 				521BA6CF2B43D96D00682914 /* HomeTabBarVC.swift in Sources */,
 				521BA6C12B43D90500682914 /* SoldBirdsViewController.swift in Sources */,
 				521BA6B82B43D04200682914 /* HomeVC.swift in Sources */,
-				521BA6DF2B43EBB500682914 /* MainNaviVC.swift in Sources */,
 				521BA6D62B43DA4C00682914 /* ExpiredBirdsViewCell.swift in Sources */,
 				521BA6CA2B43D92500682914 /* SearchBirdsViewController.swift in Sources */,
 				521BA6C92B43D92500682914 /* SearchBirdsDetailController.swift in Sources */,

@@ -10,6 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import Lottie
 
 class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,6 +18,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     var iconClick = false
     let imageIcon = UIImageView()
     var selectedImage: UIImage?
+    @IBOutlet weak var animationView: LottieAnimationView!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameTxt: UITextField!
@@ -29,6 +31,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     override func viewDidLoad() {
         super.viewDidLoad()
         imageIconClose()
+        animationView.isHidden = true
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 70
@@ -37,6 +40,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         activityIndicator.layer.shadowOpacity = 10
         activityIndicator.layer.cornerRadius = 10
         textFieldDelegate()
+        lotieAnimation()
         Utilities.styleTextField(firstNameTxt)
         Utilities.styleTextField(lastNameTxt)
         Utilities.styleTextField(emailTxt)
@@ -53,6 +57,14 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     
     @objc func imageViewTapped() {
         showImagePicker()
+    }
+    
+    func lotieAnimation(){
+        animationView.layer.cornerRadius = 20
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.play()
     }
     
     func showImagePicker() {
@@ -194,6 +206,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
             self.showError(error!)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.activityIndicator.stopAnimating()
+                self.animationView.isHidden = true
                 self.errorLabel.text = ""
             }
         } else {
@@ -210,6 +223,8 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
                         self.errorLabel.text = ""
                     }
                     } else {
+                        self.animationView.isHidden = false
+                        self.lotieAnimation()
                         
                     Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                         if let error = error {
