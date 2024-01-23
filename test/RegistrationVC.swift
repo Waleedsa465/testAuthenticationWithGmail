@@ -19,7 +19,6 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     let imageIcon = UIImageView()
     var selectedImage: UIImage?
     @IBOutlet weak var animationView: LottieAnimationView!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameTxt: UITextField!
     @IBOutlet weak var lastNameTxt: UITextField!

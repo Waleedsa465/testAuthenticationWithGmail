@@ -32,6 +32,7 @@
 		5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5236C6B92B439F9D008C1517 /* LaunchScreen.storyboard */; };
 		52A86CB82B5FD052005525FE /* birdAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 52A86CB72B5FD052005525FE /* birdAnimation.json */; };
 		52A86CBA2B5FD20A005525FE /* registerSuccessfully.json in Resources */ = {isa = PBXBuildFile; fileRef = 52A86CB92B5FD20A005525FE /* registerSuccessfully.json */; };
+		52A86CBC2B5FD5D1005525FE /* personCircle.json in Resources */ = {isa = PBXBuildFile; fileRef = 52A86CBB2B5FD5D1005525FE /* personCircle.json */; };
 		91AF20B6555294DC41226B67 /* Pods_BirdsApps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2D02D83F586D1D66F5CAF /* Pods_BirdsApps.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		5236C6BC2B439F9D008C1517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A86CB72B5FD052005525FE /* birdAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = birdAnimation.json; sourceTree = "<group>"; };
 		52A86CB92B5FD20A005525FE /* registerSuccessfully.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registerSuccessfully.json; sourceTree = "<group>"; };
+		52A86CBB2B5FD5D1005525FE /* personCircle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personCircle.json; sourceTree = "<group>"; };
 		7ECF2136F3F8D947784A3200 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
 		86E2D02D83F586D1D66F5CAF /* Pods_BirdsApps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BirdsApps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB48BC292025D77ED4D9A4DE /* Pods-BirdsApps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BirdsApps.debug.xcconfig"; path = "Target Support Files/Pods-BirdsApps/Pods-BirdsApps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				52A86CB72B5FD052005525FE /* birdAnimation.json */,
 				52A86CB92B5FD20A005525FE /* registerSuccessfully.json */,
+				52A86CBB2B5FD5D1005525FE /* personCircle.json */,
 				521BA6D92B43DA6600682914 /* DataModel.swift */,
 				521BA6DB2B43E69800682914 /* Utilities.swift */,
 				521BA6B92B43D13100682914 /* AppUtility.swift */,
@@ -272,6 +275,7 @@
 			files = (
 				5236C6BB2B439F9D008C1517 /* LaunchScreen.storyboard in Resources */,
 				52A86CBA2B5FD20A005525FE /* registerSuccessfully.json in Resources */,
+				52A86CBC2B5FD5D1005525FE /* personCircle.json in Resources */,
 				521BA6B42B43CB1700682914 /* GoogleService-Info.plist in Resources */,
 				52A86CB82B5FD052005525FE /* birdAnimation.json in Resources */,
 				5236C6B82B439F9D008C1517 /* Assets.xcassets in Resources */,

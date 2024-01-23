@@ -87,12 +87,12 @@
                                 </constraints>
                                 <color key="color" systemColor="viewFlipsideBackgroundColor"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Od-vY-gal" customClass="LottieAnimationView" customModule="Lottie">
-                                <rect key="frame" x="144" y="61" width="100" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-vJ-fJA" customClass="LottieAnimationView" customModule="Lottie">
+                                <rect key="frame" x="137.5" y="66" width="100" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="82A-xI-RCF"/>
-                                    <constraint firstAttribute="height" constant="100" id="dfl-eI-QD6"/>
+                                    <constraint firstAttribute="width" constant="100" id="biS-gk-dN4"/>
+                                    <constraint firstAttribute="height" constant="100" id="uaw-1E-SYQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="birdAnimation"/>
@@ -103,13 +103,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Riy-TK-q3X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3un-cu-OTz"/>
-                            <constraint firstItem="7Od-vY-gal" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="6.5" id="DaN-RL-vFo"/>
-                            <constraint firstItem="7Od-vY-gal" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-222.5" id="FWF-GQ-nxu"/>
                             <constraint firstItem="4JF-XH-dsL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GGw-ZY-xJd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FUR-8Q-5vE" secondAttribute="trailing" constant="20" id="HRO-Tr-Mie"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Riy-TK-q3X" secondAttribute="trailing" constant="20" id="JJ7-r8-MdC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dqp-3d-fFB" secondAttribute="trailing" constant="20" id="M6C-PX-cdg"/>
                             <constraint firstItem="4JF-XH-dsL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OZE-IV-ZKw"/>
+                            <constraint firstItem="Gyh-vJ-fJA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-217.5" id="Tbo-xW-8De"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SIm-4g-Zzh" secondAttribute="trailing" constant="20" id="ZXX-PQ-a7d"/>
                             <constraint firstItem="SIm-4g-Zzh" firstAttribute="top" secondItem="Deb-rd-tO3" secondAttribute="bottom" constant="20" id="bE6-xH-0br"/>
                             <constraint firstItem="Deb-rd-tO3" firstAttribute="top" secondItem="FUR-8Q-5vE" secondAttribute="bottom" constant="20" id="bLt-Dy-iys"/>
@@ -119,6 +118,7 @@
                             <constraint firstItem="SIm-4g-Zzh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pkG-dM-Zm5"/>
                             <constraint firstItem="Riy-TK-q3X" firstAttribute="top" secondItem="dqp-3d-fFB" secondAttribute="bottom" constant="20" id="syS-dn-kdR"/>
                             <constraint firstItem="Deb-rd-tO3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="u7Q-i5-7J6"/>
+                            <constraint firstItem="Gyh-vJ-fJA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wg2-YX-mvj"/>
                             <constraint firstItem="FUR-8Q-5vE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="xdA-uh-Wu5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Deb-rd-tO3" secondAttribute="trailing" constant="20" id="zky-bX-4rf"/>
                         </constraints>
@@ -126,7 +126,7 @@
                     <navigationItem key="navigationItem" title="Login Page" id="hka-aa-n8Y"/>
                     <connections>
                         <outlet property="activitiyIndicator" destination="4JF-XH-dsL" id="y1g-NC-DGS"/>
-                        <outlet property="animationView" destination="7Od-vY-gal" id="RPg-lq-okv"/>
+                        <outlet property="animationView" destination="Gyh-vJ-fJA" id="aue-Sv-ND2"/>
                         <outlet property="emailTxt" destination="FUR-8Q-5vE" id="ict-O3-uRi"/>
                         <outlet property="errorLabel" destination="Riy-TK-q3X" id="tW5-Us-3kH"/>
                         <outlet property="loginButton" destination="HuT-CB-VCT" id="CmU-tX-gXq"/>
@@ -205,12 +205,12 @@
                                     <constraint firstAttribute="height" constant="150" id="lFn-bL-KLw"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEd-HE-f3t" customClass="LottieAnimationView" customModule="Lottie">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nE-Kq-JdB" customClass="LottieAnimationView" customModule="Lottie">
                                 <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="TwL-WM-dw8"/>
-                                    <constraint firstAttribute="width" constant="200" id="zXe-7L-VOz"/>
+                                    <constraint firstAttribute="height" constant="200" id="2ph-bo-sgd"/>
+                                    <constraint firstAttribute="width" constant="200" id="aPZ-45-G4F"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="registerSuccessfully"/>
@@ -220,21 +220,21 @@
                         <viewLayoutGuide key="safeArea" id="ioj-Gc-iyY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UEd-HE-f3t" firstAttribute="centerY" secondItem="ffe-kO-nor" secondAttribute="centerY" id="1wb-P4-XF9"/>
                             <constraint firstItem="ioj-Gc-iyY" firstAttribute="trailing" secondItem="h2g-PI-dnH" secondAttribute="trailing" constant="20" id="31S-Jo-LNc"/>
                             <constraint firstItem="h2g-PI-dnH" firstAttribute="top" secondItem="G3C-Dk-Bk1" secondAttribute="bottom" constant="20" id="OsX-Jk-cYQ"/>
                             <constraint firstItem="I5b-jn-MNx" firstAttribute="centerX" secondItem="ffe-kO-nor" secondAttribute="centerX" id="Qwe-kS-yJn"/>
-                            <constraint firstItem="UEd-HE-f3t" firstAttribute="centerX" secondItem="ffe-kO-nor" secondAttribute="centerX" id="WN5-Ii-WaM"/>
                             <constraint firstItem="G3C-Dk-Bk1" firstAttribute="centerY" secondItem="ffe-kO-nor" secondAttribute="centerY" constant="-159.5" id="Z3f-vn-RRH"/>
+                            <constraint firstItem="9nE-Kq-JdB" firstAttribute="centerY" secondItem="ffe-kO-nor" secondAttribute="centerY" id="aIf-Vh-DKD"/>
                             <constraint firstItem="I5b-jn-MNx" firstAttribute="centerY" secondItem="ffe-kO-nor" secondAttribute="centerY" id="brf-4B-zUY"/>
                             <constraint firstItem="G3C-Dk-Bk1" firstAttribute="centerX" secondItem="ffe-kO-nor" secondAttribute="centerX" id="hHd-b7-bMz"/>
+                            <constraint firstItem="9nE-Kq-JdB" firstAttribute="centerX" secondItem="ffe-kO-nor" secondAttribute="centerX" id="wcz-pw-dba"/>
                             <constraint firstItem="h2g-PI-dnH" firstAttribute="leading" secondItem="ioj-Gc-iyY" secondAttribute="leading" constant="20" id="yTK-TD-6C5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Registration Page" id="13M-m6-cTR"/>
                     <connections>
                         <outlet property="activityIndicator" destination="I5b-jn-MNx" id="8Ub-zM-44G"/>
-                        <outlet property="animationView" destination="UEd-HE-f3t" id="YMz-8Y-9Ol"/>
+                        <outlet property="animationView" destination="9nE-Kq-JdB" id="JKx-sA-dvJ"/>
                         <outlet property="emailTxt" destination="dfw-RI-yze" id="QZS-7A-FMJ"/>
                         <outlet property="errorLabel" destination="Ndo-YH-9z0" id="zYe-I6-2le"/>
                         <outlet property="firstNameTxt" destination="AYI-Uw-JcA" id="KRM-rP-4f5"/>
