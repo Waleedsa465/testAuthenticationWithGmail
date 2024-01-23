@@ -113,7 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 activitiyIndicator.isHidden = false
                 self.errorLabel.text = error.localizedDescription
                 self.errorLabel.alpha = 1
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                     self.errorLabel.text = ""
                     self.activitiyIndicator.stopAnimating()
                     self.activitiyIndicator.isHidden = true
@@ -126,8 +126,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(email, forKey: strLoginKey)
 
                     // Navigate to the home screen or perform other actions
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                         self.activitiyIndicator.stopAnimating()
+                        self.activitiyIndicator.isHidden = true
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
                         self.navigationController?.setViewControllers([vc], animated: true)
                         self.navigationController?.isNavigationBarHidden = true
@@ -138,7 +139,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     // User's email is not verified, show a message or initiate the verification process
                     self.errorLabel.text = "Please verify your email before logging in."
                     self.errorLabel.alpha = 1
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                         self.errorLabel.text = ""
                     }
 
@@ -147,13 +148,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         if let error = error {
                             print("Error sending verification email: \(error.localizedDescription)")
                             self.errorLabel.text = error.localizedDescription
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                                 self.errorLabel.text = ""
                             }
                         } else {
                             print("Verification email sent successfully.")
                             self.errorLabel.text = "Verification email sent successfully."
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5){
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                                 self.errorLabel.text = ""
                             }
                         }

@@ -12,13 +12,14 @@ var strForLogin = "isUserLogedIn"
 
 struct User : Decodable {
     
-    let firstname: String
-    let lastname: String
-    let uid: String
-    let Email: String
-    let BirdsApp: [String: Bird]?
-    let ExpireData: [String: Bird]?
-    let SoldData: [String: Bird]?
+    let firstname : String
+    let lastname : String
+    let Email : String
+    let ProfileImageURL : String
+    let Password : String
+    let BirdsApp : [String: Bird]?
+    let ExpireData : [String: Bird]?
+    let SoldData : [String: Bird]?
 }
 
 struct Bird : Codable {

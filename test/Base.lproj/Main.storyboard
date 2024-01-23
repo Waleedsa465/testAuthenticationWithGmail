@@ -184,7 +184,7 @@
                                 </constraints>
                                 <color key="color" systemColor="viewFlipsideBackgroundColor"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Dk-Bk1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2023-12-23 at 7.53.52 PM" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-Dk-Bk1">
                                 <rect key="frame" x="112.5" y="99" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="blf-7Z-IKC"/>
@@ -900,24 +900,24 @@
                                     <action selector="logoutBtn:" destination="QHI-ZD-hCh" eventType="touchUpInside" id="zzW-tt-pmz"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-bd-E6K">
-                                <rect key="frame" x="20" y="243" width="335" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-bd-E6K">
+                                <rect key="frame" x="20" y="253" width="335" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-tF-vFb">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="53.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="66.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3o-mU-Gci">
-                                        <rect key="frame" x="0.0" y="73.5" width="335" height="53"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="335" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTv-N3-y6R">
-                                        <rect key="frame" x="0.0" y="146.5" width="335" height="53.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="133.5" width="335" height="66.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -940,7 +940,7 @@
                             <constraint firstItem="KTH-zm-dSB" firstAttribute="leading" secondItem="gQD-Mq-eEF" secondAttribute="leading" constant="20" id="0sn-8C-c3E"/>
                             <constraint firstItem="q6s-bd-E6K" firstAttribute="leading" secondItem="gQD-Mq-eEF" secondAttribute="leading" constant="20" id="5d9-5Y-ohM"/>
                             <constraint firstItem="pXO-y4-n34" firstAttribute="centerY" secondItem="DUY-LY-goL" secondAttribute="centerY" constant="-178.5" id="932-VT-ViX"/>
-                            <constraint firstItem="KTH-zm-dSB" firstAttribute="top" secondItem="q6s-bd-E6K" secondAttribute="bottom" constant="30" id="9u4-Vt-LXC"/>
+                            <constraint firstItem="KTH-zm-dSB" firstAttribute="top" secondItem="q6s-bd-E6K" secondAttribute="bottom" constant="20" id="9u4-Vt-LXC"/>
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="trailing" secondItem="q6s-bd-E6K" secondAttribute="trailing" constant="20" id="LAV-9A-ATT"/>
                             <constraint firstItem="gQD-Mq-eEF" firstAttribute="trailing" secondItem="KTH-zm-dSB" secondAttribute="trailing" constant="20" id="PjO-wW-asZ"/>
                             <constraint firstItem="pXO-y4-n34" firstAttribute="centerX" secondItem="DUY-LY-goL" secondAttribute="centerX" id="TW7-Yl-cja"/>
