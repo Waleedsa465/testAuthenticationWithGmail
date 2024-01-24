@@ -10,7 +10,6 @@ class HomeVC: UIViewController {
     var ref = Database.database().reference()
     var imgView = ""
     
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameLbl: UILabel!
     @IBOutlet weak var lastNameLbl: UILabel!
