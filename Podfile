@@ -15,5 +15,6 @@ pod 'FirebaseFirestore'
 pod 'FirebaseAuth'
 pod 'IQKeyboardManagerSwift'
 pod 'lottie-ios'
+pod 'ReachabilitySwift'
 
 end
