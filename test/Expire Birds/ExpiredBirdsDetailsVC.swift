@@ -28,7 +28,6 @@ class ExpiredBirdsDetailsVC: UIViewController {
     @IBOutlet weak var expireDate: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

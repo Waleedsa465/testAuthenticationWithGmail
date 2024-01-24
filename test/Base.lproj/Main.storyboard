@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Page-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +104,7 @@
                             <constraint firstItem="Gyh-vJ-fJA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wg2-YX-mvj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Login Page" id="hka-aa-n8Y"/>
+                    <navigationItem key="navigationItem" title="Login" id="hka-aa-n8Y"/>
                     <connections>
                         <outlet property="activitiyIndicator" destination="4JF-XH-dsL" id="y1g-NC-DGS"/>
                         <outlet property="animationView" destination="Gyh-vJ-fJA" id="aue-Sv-ND2"/>
@@ -120,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="3541.5999999999999" y="472.71364317841085"/>
         </scene>
-        <!--Registration Page-->
+        <!--Registration -->
         <scene sceneID="KvU-ZZ-Hu3">
             <objects>
                 <viewController storyboardIdentifier="RegistrationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5lY-sc-dh1" customClass="RegistrationVC" customModule="BirdsApps" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +212,7 @@
                             <constraint firstItem="h2g-PI-dnH" firstAttribute="leading" secondItem="ioj-Gc-iyY" secondAttribute="leading" constant="20" id="yTK-TD-6C5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Registration Page" id="13M-m6-cTR"/>
+                    <navigationItem key="navigationItem" title="Registration " id="13M-m6-cTR"/>
                     <connections>
                         <outlet property="activityIndicator" destination="I5b-jn-MNx" id="8Ub-zM-44G"/>
                         <outlet property="animationView" destination="9nE-Kq-JdB" id="JKx-sA-dvJ"/>
