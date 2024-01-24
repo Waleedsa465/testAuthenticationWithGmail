@@ -52,10 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.2
         animationView.play()
-        
-        // Initialize Reachability
 
-        // Initialize Reachability
         do {
             reachability = try Reachability()
         } catch {

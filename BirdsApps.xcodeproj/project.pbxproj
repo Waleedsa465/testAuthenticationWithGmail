@@ -50,7 +50,6 @@
 		521BA6C82B43D92500682914 /* SearchBirdsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBirdsViewController.swift; sourceTree = "<group>"; };
 		521BA6CB2B43D93200682914 /* AddBirdsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBirdsViewController.swift; sourceTree = "<group>"; };
 		521BA6CE2B43D96D00682914 /* HomeTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarVC.swift; sourceTree = "<group>"; };
-		521BA6D02B43D9EA00682914 /* loginbg.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loginbg.mp4; sourceTree = "<group>"; };
 		521BA6D22B43DA4C00682914 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		521BA6D32B43DA4C00682914 /* ExpiredBirdsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpiredBirdsViewCell.swift; sourceTree = "<group>"; };
 		521BA6D42B43DA4C00682914 /* SoldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTableViewCell.swift; sourceTree = "<group>"; };
@@ -196,7 +195,6 @@
 				521BA6B72B43D04200682914 /* HomeVC.swift */,
 				5236C6B42B439F98008C1517 /* Main.storyboard */,
 				5236C6B72B439F9D008C1517 /* Assets.xcassets */,
-				521BA6D02B43D9EA00682914 /* loginbg.mp4 */,
 				5236C6B92B439F9D008C1517 /* LaunchScreen.storyboard */,
 				5236C6BC2B439F9D008C1517 /* Info.plist */,
 				521BA6B32B43CB1700682914 /* GoogleService-Info.plist */,
