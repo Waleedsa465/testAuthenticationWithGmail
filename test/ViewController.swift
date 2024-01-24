@@ -7,17 +7,17 @@
 
 import UIKit
 import FirebaseAuth
-import AVKit
-import AVFoundation
 import Lottie
+import Reachability
+
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    var videoPlayer: AVPlayer?
-    var videoPlayerLayer: AVPlayerLayer?
     var iconClick = false
     let imageIcon = UIImageView()
-
+    var reachability: Reachability!
+    var alertShown = false
+    
     @IBOutlet weak var animationView: LottieAnimationView!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passTxt: UITextField!
@@ -28,6 +28,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let userDefault = UserDefaults.standard.value(forKey: strLoginKey) as? Bool {
+            if userDefault {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
+                self.navigationController?.setViewControllers([vc], animated: true)
+                print("Already Login successfully")
+            } else {
+                print("Please sign In again")
+            }
+        }
+        
         imageIconClose()
         setUpElements()
         textFieldDelegate()
@@ -41,17 +52,56 @@ class ViewController: UIViewController, UITextFieldDelegate {
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.5
         animationView.play()
+        
+        // Initialize Reachability
 
-        if let userDefault = UserDefaults.standard.value(forKey: strLoginKey) as? Bool {
-            if userDefault {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
-                self.navigationController?.setViewControllers([vc], animated: true)
-                print("Already Login successfully")
-            } else {
-                print("Please sign In again")
-            }
+        // Initialize Reachability
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
         }
     }
+    
+    
+    @objc func reachabilityChanged(notification: Notification) {
+            guard let reachability = notification.object as? Reachability else { return }
+
+            if reachability.connection != .unavailable {
+                print("Network is available")
+                if alertShown {
+                    dismissAlert()
+                }
+            } else {
+                print("Network is not available")
+                showAlert(message: "No internet connection. Please check your network settings.")
+            }
+        }
+
+        func showAlert(message: String) {
+            if !alertShown {
+                alertShown = true
+                let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                    self?.dismissAlert()
+                }))
+                present(alert, animated: true, completion: nil)
+            }
+        }
+
+        func dismissAlert() {
+            alertShown = false
+            dismiss(animated: true, completion: nil)
+        }
     
     func imageIconClose(){
         imageIcon.image = UIImage(named: "close_eye")
@@ -214,4 +264,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    deinit {
+            reachability.stopNotifier()
+            NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+        }
 }

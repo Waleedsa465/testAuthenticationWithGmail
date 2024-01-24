@@ -1,9 +1,11 @@
 import UIKit
+import Reachability
 import Firebase
 import FirebaseDatabase
 
 class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
+    var reachability: Reachability!
+    var alertShown = false
     var arrData = [SoldBird]()
     var filteredData = [SoldBird]()
     var ref = Database.database().reference()
@@ -14,10 +16,59 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.set(true, forKey: strLoginKey)
-
+        
         configureTableView()
         fetchDataForCurrentUser()
         searchBar.delegate = self
+        
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
+        
+    }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlerts(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+    
+    func showAlerts(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
+        
     }
 
     func configureTableView() {
@@ -190,5 +241,10 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func refreshBtn(_ sender: Any) {
         self.fetchDataForCurrentUser()
         self.tableView.reloadData()
+    }
+    
+    deinit {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
 }

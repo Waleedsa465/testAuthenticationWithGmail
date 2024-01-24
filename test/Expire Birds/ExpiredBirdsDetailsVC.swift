@@ -7,11 +7,14 @@
 
 import UIKit
 import Kingfisher
+import Reachability
 
 class ExpiredBirdsDetailsVC: UIViewController {
     
     var imgView = ""
     var expireDetail : ExpiredBird!
+    var reachability: Reachability!
+    var alertShown = false
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var certificateNo: UILabel!
@@ -24,6 +27,8 @@ class ExpiredBirdsDetailsVC: UIViewController {
     @IBOutlet weak var accuracyLbl: UILabel!
     @IBOutlet weak var expireDate: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +45,52 @@ class ExpiredBirdsDetailsVC: UIViewController {
                 self.activityIndicator.stopAnimating()
             })
         }
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlerts(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+    
+    func showAlerts(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -90,5 +141,9 @@ class ExpiredBirdsDetailsVC: UIViewController {
         }
     }
     
+    deinit {
+            reachability.stopNotifier()
+            NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+        }
 }
 

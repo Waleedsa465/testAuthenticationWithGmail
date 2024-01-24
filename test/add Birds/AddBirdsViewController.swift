@@ -1,4 +1,5 @@
 import UIKit
+import Reachability
 import Firebase
 import AVFoundation
 import AVKit
@@ -20,14 +21,15 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var arrayData = [Bird]()
-    
+    var reachability: Reachability!
+    var alertShown = false
     var ref = DatabaseReference.init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: strLoginKey)
-
+        
         activityIndicator.layer.cornerRadius = 10
         activityIndicator.layer.shadowOpacity = 10
         borderForAllTextField()
@@ -35,18 +37,66 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
         imageView.contentMode = .scaleAspectFill
         setupTextField()
         setupKeyboardHandling()
-
+        
         // Add tap gesture recognizer to the imageView
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
-
+        
         activityIndicator.isHidden = true
         self.ref = Database.database().reference()
-//        view.addSubview(activityIndicator)
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
         
     }
-    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlerts(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+
+    func showAlerts(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
+        
+    }
+
+        // ... (your existing code)
+
+
     
     func borderForAllTextField(){
         dateTextField.attributedPlaceholder = NSAttributedString(string: "Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
@@ -347,6 +397,11 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
         dateTextField.text = ""
         imageView.image = nil
         imageView.image = UIImage(named: "icons8-person-100 (2)")
+    }
+    
+    deinit {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
     
 }

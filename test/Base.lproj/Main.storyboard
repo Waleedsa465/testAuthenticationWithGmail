@@ -1609,6 +1609,10 @@
             <point key="canvasLocation" x="2041" y="1105"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="9nE-Kq-JdB"/>
+        <designable name="Gyh-vJ-fJA"/>
+    </designables>
     <resources>
         <image name="WhatsApp Image 2023-12-23 at 7.53.52 PM" width="256" height="341.33334350585938"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>

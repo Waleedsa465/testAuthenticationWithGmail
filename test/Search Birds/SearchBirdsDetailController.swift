@@ -1,4 +1,5 @@
 import UIKit
+import Reachability
 import FirebaseAuth
 import Kingfisher
 import FirebaseDatabase
@@ -26,12 +27,13 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
     var imgView = ""
     var dataForNextViewController: Bird!
     var arrayData = [Bird]()
-    
+    var reachability: Reachability!
+    var alertShown = false
     var ref = DatabaseReference.init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         UserDefaults.standard.set(true, forKey: strLoginKey)
         activityIndicator.hidesWhenStopped = true
         allTxtLabel()
@@ -39,6 +41,20 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         self.ref = Database.database().reference()
         setupKeyboardHandling()
         setupTextField()
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
         imgView = self.dataForNextViewController.uploadCurrentImage
         
         let placeholderImage = UIImage(named: "placeholderImage")
@@ -57,8 +73,44 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         
         let tapGestureRecognizers = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         scrollView.addGestureRecognizer(tapGestureRecognizers)
-//        activityIndicator.stopAnimating()
     }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlerts(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+
+    func showAlerts(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
+        
+    }
+
+        // ... (your existing code)
+
+
     
     func allTxtLabel(){
         ownerName.text = ("Owner Name :  \(self.dataForNextViewController.owner_Name)")
@@ -305,6 +357,10 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
             print("Error while uploading data")
         }))
         present(actions, animated: true)
+    }
+    deinit {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
 
 }

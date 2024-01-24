@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import Lottie
+import Reachability
 
 class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -18,6 +19,9 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     var iconClick = false
     let imageIcon = UIImageView()
     var selectedImage: UIImage?
+    var reachability: Reachability!
+    var alertShown = false
+    
     @IBOutlet weak var animationView: LottieAnimationView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstNameTxt: UITextField!
@@ -45,6 +49,23 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         Utilities.styleTextField(emailTxt)
         Utilities.styleTextField(passTxt)
         ref = Database.database().reference()
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
+        let tapGestureRecognizers = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageIcon.isUserInteractionEnabled = true
+        imageIcon.addGestureRecognizer(tapGestureRecognizers)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
@@ -52,6 +73,45 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         activityIndicator.hidesWhenStopped = true
         
         // Do any additional setup after loading the view.
+        
+    }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlert(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+
+    func showAlert(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    deinit {
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
     
     @objc func imageViewTapped() {
@@ -132,6 +192,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     }
     
     func imageIconClose(){
+        
         imageIcon.image = UIImage(named: "close_eye")
         let contentView = UIView()
         contentView.addSubview(imageIcon)
@@ -139,9 +200,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
         passTxt.rightView = contentView
         passTxt.rightViewMode = .always
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
     @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){

@@ -1,4 +1,5 @@
 import UIKit
+import Reachability
 import Firebase
 import FirebaseDatabase
 
@@ -7,6 +8,8 @@ class ExpiredBirdsViewController: UIViewController, UITableViewDelegate, UITable
     var arrData = [ExpiredBird]()
     var filteredData = [ExpiredBird]()
     var ref = Database.database().reference()
+    var reachability: Reachability!
+    var alertShown = false
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,6 +22,53 @@ class ExpiredBirdsViewController: UIViewController, UITableViewDelegate, UITable
         fetchDataForCurrentUser()
         searchBar.layer.cornerRadius = 100
         searchBar.delegate = self
+        do {
+            reachability = try Reachability()
+        } catch {
+            print("Unable to create Reachability")
+        }
+        
+        // Observe Reachability Changes
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start Reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(notification: Notification) {
+        guard let reachability = notification.object as? Reachability else { return }
+        
+        if reachability.connection != .unavailable {
+            print("Network is available")
+            if alertShown {
+                dismissAlert()
+            }
+        } else {
+            print("Network is not available")
+            showAlerts(message: "No internet connection. Please check your network settings.")
+        }
+        
+    }
+    
+    func showAlerts(message: String) {
+        if !alertShown {
+            alertShown = true
+            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
+                self?.dismissAlert()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func dismissAlert() {
+        alertShown = false
+        dismiss(animated: true, completion: nil)
+        
     }
 
     func configureTableView() {
@@ -192,4 +242,9 @@ class ExpiredBirdsViewController: UIViewController, UITableViewDelegate, UITable
         self.fetchDataForCurrentUser()
         self.tableView.reloadData()
     }
+    
+    deinit {
+            reachability.stopNotifier()
+            NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+        }
 }
