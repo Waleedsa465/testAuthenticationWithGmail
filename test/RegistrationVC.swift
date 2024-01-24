@@ -191,17 +191,28 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         }
     }
     
-    func imageIconClose(){
-        
+    func imageIconClose() {
         imageIcon.image = UIImage(named: "close_eye")
         let contentView = UIView()
         contentView.addSubview(imageIcon)
         contentView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
-        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
+        imageIcon.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
         passTxt.rightView = contentView
         passTxt.rightViewMode = .always
-        
+
+        // Remove existing gesture recognizer
+        if let existingGestureRecognizers = imageIcon.gestureRecognizers {
+            for gestureRecognizer in existingGestureRecognizers {
+                imageIcon.removeGestureRecognizer(gestureRecognizer)
+            }
+        }
+
+        // Add new gesture recognizer
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageIcon.isUserInteractionEnabled = true
+        imageIcon.addGestureRecognizer(tapGestureRecognizer)
     }
+
     
     @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){
         let tappedImage = tapGestureRecognizer.view as! UIImageView
