@@ -141,15 +141,18 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchBirdsDetailController") as! SearchBirdsDetailController
-        
-        if isFiltering() {
-            vc.dataForNextViewController = filteredData[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SearchBirdsDetailController") as? SearchBirdsDetailController {
+            if isFiltering() {
+                vc.dataForNextViewController = filteredData[indexPath.row]
+            } else {
+                vc.dataForNextViewController = arrData[indexPath.row]
+            }
+
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            vc.dataForNextViewController = arrData[indexPath.row]
+            print("Unable to instantiate SearchBirdsDetailController from storyboard.")
         }
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     @IBAction func refreshBtn(_ sender: Any) {

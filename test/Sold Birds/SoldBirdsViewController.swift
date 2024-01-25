@@ -144,18 +144,20 @@ class SoldBirdsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SoldDetailViewController") as! SoldDetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SoldDetailViewController") as? SoldDetailViewController {
+            let selectedBird: SoldBird
+            if isFiltering() {
+                selectedBird = filteredData[indexPath.row]
+            } else {
+                selectedBird = arrData[indexPath.row]
+            }
 
-        let selectedBird: SoldBird
-        if isFiltering() {
-            selectedBird = filteredData[indexPath.row]
+            vc.soldData = selectedBird
+
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            selectedBird = arrData[indexPath.row]
+            print("Unable to instantiate SoldDetailViewController from storyboard.")
         }
-
-        vc.soldData = selectedBird
-
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Search Bar Delegate

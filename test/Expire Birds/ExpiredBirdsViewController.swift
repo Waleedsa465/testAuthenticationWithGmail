@@ -144,18 +144,20 @@ class ExpiredBirdsViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ExpiredBirdsDetailsVC") as! ExpiredBirdsDetailsVC
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ExpiredBirdsDetailsVC") as? ExpiredBirdsDetailsVC {
+            let selectedBird: ExpiredBird
+            if isFiltering() {
+                selectedBird = filteredData[indexPath.row]
+            } else {
+                selectedBird = arrData[indexPath.row]
+            }
 
-        let selectedBird: ExpiredBird
-        if isFiltering() {
-            selectedBird = filteredData[indexPath.row]
+            vc.expireDetail = selectedBird
+
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            selectedBird = arrData[indexPath.row]
+            print("Unable to instantiate ExpiredBirdsDetailsVC from storyboard.")
         }
-
-        vc.expireDetail = selectedBird
-
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Search Bar Delegate

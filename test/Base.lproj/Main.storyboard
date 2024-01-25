@@ -910,9 +910,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTH-zm-dSB">
-                                <rect key="frame" x="20" y="473" width="335" height="45"/>
+                                <rect key="frame" x="20" y="468" width="335" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Dmm-O2-Sft"/>
+                                    <constraint firstAttribute="height" constant="50" id="Dmm-O2-Sft"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Logout " cornerStyle="capsule"/>
@@ -921,7 +921,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q6s-bd-E6K">
-                                <rect key="frame" x="20" y="253" width="335" height="200"/>
+                                <rect key="frame" x="20" y="248" width="335" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-tF-vFb">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="66.5"/>
