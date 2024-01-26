@@ -1,17 +1,12 @@
-
-
 import UIKit
 import Firebase
 import FirebaseDatabase
-import Reachability
 
 class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var arrData = [Bird]()
     var filteredData = [Bird]()
     var ref = Database.database().reference()
-    var reachability: Reachability!
-    var alertShown = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,58 +16,11 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
         configureTableView()
         fetchDataForCurrentUser()
         searchBar.delegate = self
-        
-        do {
-            reachability = try Reachability()
-        } catch {
-            print("Unable to create Reachability")
-        }
-        
-        // Observe Reachability Changes
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
-        
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Unable to start Reachability notifier")
-        }
     }
     
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    @objc func reachabilityChanged(notification: Notification) {
-        guard let reachability = notification.object as? Reachability else { return }
-        
-        if reachability.connection != .unavailable {
-            print("Network is available")
-            if alertShown {
-                dismissAlert()
-            }
-        } else {
-            print("Network is not available")
-            showAlerts(message: "No internet connection. Please check your network settings.")
-        }
-        
-    }
-    
-    func showAlerts(message: String) {
-        if !alertShown {
-            alertShown = true
-            let alert = UIAlertController(title: "Network Unavailable", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (_) in
-                self?.dismissAlert()
-            }))
-            present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    func dismissAlert() {
-        alertShown = false
-        dismiss(animated: true, completion: nil)
-        
     }
     
     func fetchDataForCurrentUser() {
@@ -183,16 +131,6 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.reloadData()
     }
     
-    
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -217,7 +155,9 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
             present(alert, animated: true, completion: nil)
         }
     }
+    
     // MARK: - Delete Data
+    
     func deleteBird(withCriteria criteria: [String: Any], indexPath: IndexPath) {
         guard let currentUserUID = Auth.auth().currentUser?.uid else {
             // Handle the case where the user is not authenticated
@@ -236,7 +176,7 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
                     if let error = error {
                         print("Error deleting bird data: \(error.localizedDescription)")
                     } else {
-                        self.showAlert(message: "Data Deleted Successfully")
+//                        self.showAlert(message: "Data Deleted Successfully")
                         print("Bird data deleted successfully.")
                     }
                 }
@@ -253,9 +193,5 @@ class SearchBirdsViewController: UIViewController, UITableViewDelegate, UITableV
             // Reload the table view
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-    }
-    deinit {
-        reachability.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
 }
