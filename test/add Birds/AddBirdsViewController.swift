@@ -99,15 +99,6 @@ class AddBirdsViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
     
     func borderForAllTextField(){
-        dateTextField.attributedPlaceholder = NSAttributedString(string: "Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        certificateNoTextField.attributedPlaceholder = NSAttributedString(string: "Certificate No", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        birdIDTextField.attributedPlaceholder = NSAttributedString(string: "Bird ID", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        ownerNameTextField.attributedPlaceholder = NSAttributedString(string: "Owner Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        birdSpecieTextField.attributedPlaceholder = NSAttributedString(string: "Bird Specie", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        sampleTypeTextField.attributedPlaceholder = NSAttributedString(string: "Sample Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        collectionTextField.attributedPlaceholder = NSAttributedString(string: "Collection Type", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        sexDeterminedTextField.attributedPlaceholder = NSAttributedString(string: "Male/Female", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        accuracyTextField.attributedPlaceholder = NSAttributedString(string: "Accuracy 99%", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         Utilities.styleTextField(certificateNoTextField)
         Utilities.styleTextField(birdIDTextField)
         Utilities.styleTextField(ownerNameTextField)

@@ -1178,9 +1178,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2023-12-23 at 7.53.52 PM" translatesAutoresizingMaskIntoConstraints="NO" id="qHw-xK-twh">
-                                <rect key="frame" x="0.0" y="48" width="414" height="765"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bQS-Yx-tN3">
                                 <rect key="frame" x="20" y="348" width="374" height="40"/>
                                 <subviews>
@@ -1299,8 +1296,6 @@
                         <constraints>
                             <constraint firstItem="JLA-1D-dBK" firstAttribute="centerY" secondItem="ZzA-1T-1cZ" secondAttribute="centerY" id="00b-6R-90r"/>
                             <constraint firstItem="M6I-qx-bzQ" firstAttribute="top" secondItem="E3r-WH-mce" secondAttribute="bottom" constant="5" id="1Kc-ox-e1x"/>
-                            <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="qHw-xK-twh" secondAttribute="trailing" id="1pb-FN-gXA"/>
-                            <constraint firstItem="SBm-2i-UOL" firstAttribute="bottom" secondItem="qHw-xK-twh" secondAttribute="bottom" id="An9-yA-Hkh"/>
                             <constraint firstItem="JLA-1D-dBK" firstAttribute="centerX" secondItem="ZzA-1T-1cZ" secondAttribute="centerX" id="Cmx-jN-szb"/>
                             <constraint firstItem="E3r-WH-mce" firstAttribute="top" secondItem="9lP-Q0-7ta" secondAttribute="bottom" constant="5" id="ENd-Rz-qcU"/>
                             <constraint firstItem="bQS-Yx-tN3" firstAttribute="top" secondItem="TJu-A9-7Vq" secondAttribute="bottom" constant="20" id="GmT-Me-bFd"/>
@@ -1309,14 +1304,12 @@
                             <constraint firstItem="B8y-aP-bR2" firstAttribute="top" secondItem="bQS-Yx-tN3" secondAttribute="bottom" constant="5" id="X9T-qh-HWR"/>
                             <constraint firstItem="9lP-Q0-7ta" firstAttribute="leading" secondItem="SBm-2i-UOL" secondAttribute="leading" constant="20" id="b9T-M9-uXA"/>
                             <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="bQS-Yx-tN3" secondAttribute="trailing" constant="20" id="eA7-Z3-94y"/>
-                            <constraint firstItem="qHw-xK-twh" firstAttribute="leading" secondItem="SBm-2i-UOL" secondAttribute="leading" id="ePP-DG-a6K"/>
                             <constraint firstItem="TJu-A9-7Vq" firstAttribute="leading" secondItem="SBm-2i-UOL" secondAttribute="leading" constant="20" id="eZc-jg-w1A"/>
                             <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="9lP-Q0-7ta" secondAttribute="trailing" constant="20" id="gcB-hS-mqJ"/>
                             <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="B8y-aP-bR2" secondAttribute="trailing" constant="20" id="glW-0D-YMh"/>
                             <constraint firstItem="9lP-Q0-7ta" firstAttribute="top" secondItem="B8y-aP-bR2" secondAttribute="bottom" constant="5" id="hcc-yb-rxG"/>
                             <constraint firstItem="TJu-A9-7Vq" firstAttribute="top" secondItem="SBm-2i-UOL" secondAttribute="top" constant="30" id="iZv-iX-fDH"/>
                             <constraint firstItem="E3r-WH-mce" firstAttribute="leading" secondItem="SBm-2i-UOL" secondAttribute="leading" constant="20" id="jmA-c6-wwz"/>
-                            <constraint firstItem="qHw-xK-twh" firstAttribute="top" secondItem="SBm-2i-UOL" secondAttribute="top" id="nzN-eY-6QH"/>
                             <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="M6I-qx-bzQ" secondAttribute="trailing" constant="20" id="rN1-yR-5hd"/>
                             <constraint firstItem="M6I-qx-bzQ" firstAttribute="leading" secondItem="SBm-2i-UOL" secondAttribute="leading" constant="20" id="rvV-nS-11r"/>
                             <constraint firstItem="SBm-2i-UOL" firstAttribute="trailing" secondItem="TJu-A9-7Vq" secondAttribute="trailing" constant="20" id="uTw-St-1Ls"/>
@@ -1613,7 +1606,6 @@
         <designable name="Gyh-vJ-fJA"/>
     </designables>
     <resources>
-        <image name="WhatsApp Image 2023-12-23 at 7.53.52 PM" width="256" height="341.33334350585938"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="123"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>

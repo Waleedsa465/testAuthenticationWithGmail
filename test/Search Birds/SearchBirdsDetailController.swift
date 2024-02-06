@@ -127,10 +127,6 @@ class SearchBirdsDetailController: UIViewController, UITextFieldDelegate {
         Utilities.styleTextField(buyerPhoneNumber)
         Utilities.styleTextField(buyerNameText)
         
-        soldorExpireDateTxt.attributedPlaceholder = NSAttributedString(string: "Sold or Expire Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        buyerPhoneNumber.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        buyerNameText.attributedPlaceholder = NSAttributedString(string: "Sold To : Buyer Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blue])
-        
         buyerNameText.delegate = self
         buyerPhoneNumber.delegate = self
     }
