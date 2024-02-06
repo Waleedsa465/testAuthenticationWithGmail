@@ -13,10 +13,9 @@ import Reachability
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    var iconClick = false
-    let imageIcon = UIImageView()
     var reachability: Reachability!
     var alertShown = false
+    
     
     @IBOutlet weak var animationView: LottieAnimationView!
     @IBOutlet weak var emailTxt: UITextField!
@@ -25,6 +24,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activitiyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var showPasswordBtN: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        imageIconClose()
         setUpElements()
         textFieldDelegate()
         errorLabel.alpha = 0
@@ -52,6 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.2
         animationView.play()
+        showPasswordBtN.setTitle("", for: .normal)
 
         do {
             reachability = try Reachability()
@@ -99,45 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             alertShown = false
             dismiss(animated: true, completion: nil)
         }
-    
-    func imageIconClose() {
-        imageIcon.image = UIImage(named: "close_eye")
-        let contentView = UIView()
-        contentView.addSubview(imageIcon)
-        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
-        imageIcon.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
-        passTxt.rightView = contentView
-        passTxt.rightViewMode = .always
 
-        // Remove existing gesture recognizer
-        if let existingGestureRecognizers = imageIcon.gestureRecognizers {
-            for gestureRecognizer in existingGestureRecognizers {
-                imageIcon.removeGestureRecognizer(gestureRecognizer)
-            }
-        }
-
-        // Add new gesture recognizer
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecognizer)
-    }
-
-    
-    @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){
-        
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        if iconClick{
-            
-            iconClick = false
-            tappedImage.image = UIImage(named: "open_eye")
-            passTxt.isSecureTextEntry = false
-        }
-        else{
-            iconClick = true
-            tappedImage.image = UIImage(named: "close_eye")
-            passTxt.isSecureTextEntry = true
-        }
-    }
     
     func textFieldDelegate(){
         emailTxt.delegate = self
@@ -269,4 +232,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             reachability.stopNotifier()
             NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
         }
+    
+    
+    @IBAction func showPassBtn(_ sender: Any) {
+        passTxt.isSecureTextEntry.toggle()
+        let imageName = passTxt.isSecureTextEntry ? "close_eye" : "open_eye"
+        showPasswordBtN.setImage(UIImage(named: imageName), for: .normal)
+    }
+    
+    
 }

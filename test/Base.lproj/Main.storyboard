@@ -25,11 +25,27 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Deb-rd-tO3">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPo-Of-ekg">
                                         <rect key="frame" x="0.0" y="62.5" width="374" height="50.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Deb-rd-tO3">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2D-PQ-mjB">
+                                                <rect key="frame" x="334" y="0.0" width="40" height="50.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Neq-tP-yrk"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="close_eye"/>
+                                                <connections>
+                                                    <action selector="showPassBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gXD-cD-GAg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-4g-Zzh">
                                         <rect key="frame" x="0.0" y="124.5" width="374" height="51"/>
                                         <subviews>
@@ -112,6 +128,7 @@
                         <outlet property="errorLabel" destination="Riy-TK-q3X" id="tW5-Us-3kH"/>
                         <outlet property="loginButton" destination="HuT-CB-VCT" id="CmU-tX-gXq"/>
                         <outlet property="passTxt" destination="Deb-rd-tO3" id="p1V-L7-hur"/>
+                        <outlet property="showPasswordBtN" destination="z2D-PQ-mjB" id="rkb-zf-5eH"/>
                         <outlet property="signUpButton" destination="dqp-3d-fFB" id="KvH-hF-cLG"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="0ow-Iq-ken"/>
                     </connections>
@@ -146,11 +163,27 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ze2-Sp-5bL">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGX-FQ-KSR">
                                         <rect key="frame" x="0.0" y="180" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Ze2-Sp-5bL">
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRS-iN-TXx">
+                                                <rect key="frame" x="334" y="0.0" width="40" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="VF9-9v-IM9"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="close_eye"/>
+                                                <connections>
+                                                    <action selector="showPassBtn:" destination="5lY-sc-dh1" eventType="touchUpInside" id="3EQ-0w-tWI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-AP-HaG">
                                         <rect key="frame" x="0.0" y="240" width="374" height="50"/>
                                         <state key="normal" title="Button"/>
@@ -222,6 +255,7 @@
                         <outlet property="imageView" destination="G3C-Dk-Bk1" id="MTy-9P-ukf"/>
                         <outlet property="lastNameTxt" destination="ZVp-ny-Qeu" id="rUt-bJ-HHa"/>
                         <outlet property="passTxt" destination="Ze2-Sp-5bL" id="Ivw-W8-bpZ"/>
+                        <outlet property="showPasswordBtN" destination="RRS-iN-TXx" id="ghY-j5-VCT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wac-pO-CsN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1609,6 +1643,7 @@
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="123"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="close_eye" width="30" height="30"/>
         <image name="exclamationmark.bubble.circle.fill" catalog="system" width="128" height="123"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="icons8-person-100 (2)" width="100" height="100"/>

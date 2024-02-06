@@ -30,10 +30,12 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var showPasswordBtN: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageIconClose()
+        
+        
         animationView.isHidden = true
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
@@ -42,6 +44,8 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         activityIndicator.isHidden = true
         activityIndicator.layer.shadowOpacity = 10
         activityIndicator.layer.cornerRadius = 10
+        showPasswordBtN.setTitle("", for: .normal)
+
         textFieldDelegate()
         lotieAnimation()
         Utilities.styleTextField(firstNameTxt)
@@ -63,9 +67,6 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         } catch {
             print("Unable to start Reachability notifier")
         }
-        let tapGestureRecognizers = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecognizers)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageView.isUserInteractionEnabled = true
@@ -89,6 +90,14 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
             showAlert(message: "No internet connection. Please check your network settings.")
         }
         
+    }
+    
+    @IBAction func showPassBtn(_ sender: Any) {
+        passTxt.isSecureTextEntry.toggle()
+        showPasswordBtN.setTitle("", for: .normal)
+        // Change button image based on password visibility
+        let imageName = passTxt.isSecureTextEntry ? "close_eye" : "open_eye"
+        showPasswordBtN.setImage(UIImage(named: imageName), for: .normal)
     }
 
     func showAlert(message: String) {
@@ -191,43 +200,7 @@ class RegistrationVC: UIViewController,UITextFieldDelegate, UIImagePickerControl
         }
     }
     
-    func imageIconClose() {
-        imageIcon.image = UIImage(named: "close_eye")
-        let contentView = UIView()
-        contentView.addSubview(imageIcon)
-        contentView.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
-        imageIcon.frame = CGRect(x: 0, y: 0, width: UIImage(named: "close_eye")!.size.width, height: UIImage(named: "close_eye")!.size.height)
-        passTxt.rightView = contentView
-        passTxt.rightViewMode = .always
 
-        // Remove existing gesture recognizer
-        if let existingGestureRecognizers = imageIcon.gestureRecognizers {
-            for gestureRecognizer in existingGestureRecognizers {
-                imageIcon.removeGestureRecognizer(gestureRecognizer)
-            }
-        }
-
-        // Add new gesture recognizer
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageIcon.isUserInteractionEnabled = true
-        imageIcon.addGestureRecognizer(tapGestureRecognizer)
-    }
-
-    
-    @objc func imageTapped(tapGestureRecognizer:UITapGestureRecognizer){
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        if iconClick{
-            iconClick = false
-            tappedImage.image = UIImage(named: "open_eye")
-            passTxt.isSecureTextEntry = false
-        }
-        else{
-            iconClick = true
-            tappedImage.image = UIImage(named: "close_eye")
-            passTxt.isSecureTextEntry = true
-        }
-    }
-    
     func textFieldDelegate(){
         firstNameTxt.delegate = self
         lastNameTxt.delegate = self
